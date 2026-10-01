@@ -1,0 +1,1740 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>আল-নূর সমাজকল্যাণ সংগঠন</title>
+<meta name="description" content="মানবতার সেবায় নিবেদিত একটি আধুনিক সমাজকল্যাণ সংগঠন।" />
+<link rel="stylesheet" href="https://fonts.maateen.me/solaiman-lipi/font.css" />
+<style>
+  :root{
+    --primary:#15803d; --primary-dark:#14532d; --gold:#d4a017; --gold-light:#fde68a;
+    --bg:#f7fafc; --card:#ffffff; --border:#e5e7eb; --muted:#64748b; --text:#0f172a;
+    --success:#16a34a; --danger:#dc2626;
+    --shadow-soft:0 1px 2px rgba(0,0,0,.04),0 1px 8px rgba(0,0,0,.06);
+    --shadow-elegant:0 10px 30px -10px rgba(20,83,45,.25);
+    --grad-forest:linear-gradient(135deg,#15803d 0%,#14532d 100%);
+    --grad-gold:linear-gradient(135deg,#fde68a 0%,#d4a017 100%);
+    --grad-hero:linear-gradient(135deg,#14532d 0%,#15803d 50%,#d4a017 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'SolaimanLipi',system-ui,sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  input,textarea,select{font:inherit;width:100%;padding:.6rem .8rem;border:1px solid var(--border);border-radius:.6rem;background:#fff;color:var(--text)}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,128,61,.15)}
+  .container{max-width:1200px;margin:0 auto;padding:0 1rem}
+
+  /* HEADER */
+  header.site{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  header.site::before{content:'';position:absolute;inset:0;background-image:var(--header-img,none);background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 30%,rgba(0,0,0,.9) 78%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,transparent 30%,rgba(0,0,0,.9) 78%,#000 100%);pointer-events:none}
+  header.site .nav{position:relative;z-index:1}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+  .logo{display:flex;align-items:center;gap:.7rem}
+  .logo-mark{width:42px;height:42px;border-radius:50%;background:var(--grad-forest);color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.1rem;box-shadow:var(--shadow-elegant);overflow:hidden}
+  .logo-name{font-weight:800;color:var(--primary-dark);font-size:1.05rem;letter-spacing:.01em;text-shadow:0 1px 0 #fff,0 -1px 0 #fff,1px 0 0 #fff,-1px 0 0 #fff,0 2px 6px rgba(255,255,255,.9),0 0 12px rgba(255,255,255,.7)}
+  .logo-sub{font-size:.72rem;color:var(--muted);font-weight:600;text-shadow:0 1px 0 #fff,0 2px 5px rgba(255,255,255,.9),0 0 10px rgba(255,255,255,.7)}
+  nav.links{display:flex;gap:.3rem;align-items:center}
+  nav.links a{padding:.5rem .9rem;border-radius:.6rem;font-size:.92rem;color:var(--text);transition:.2s}
+  nav.links a:hover,nav.links a.active{background:var(--primary);color:#fff}
+  .nav-dropdown{position:relative}
+  .nav-dropdown>button{background:none;border:none;font:inherit;font-size:.92rem;color:var(--text);padding:.5rem .9rem;border-radius:.6rem;cursor:pointer;display:flex;align-items:center;gap:.3rem;transition:.2s}
+  .nav-dropdown>button:hover,.nav-dropdown.open>button{background:var(--primary);color:#fff}
+  .nav-dropdown-menu{position:absolute;top:calc(100% + .5rem);left:0;background:#fff;border:1px solid var(--border);border-radius:.7rem;box-shadow:var(--shadow-elegant);min-width:200px;padding:.4rem;display:none;z-index:50}
+  .nav-dropdown.open .nav-dropdown-menu{display:block}
+  .nav-dropdown-menu a{display:block;padding:.65rem .8rem;border-radius:.5rem;font-size:.9rem}
+  .menu-btn{display:none;width:42px;height:42px;border-radius:.6rem;background:#fff;border:1px solid var(--border);position:relative;z-index:2}
+  .menu-btn span{display:block;width:20px;height:2px;background:var(--text);margin:4px auto;border-radius:2px;transition:.25s}
+  .menu-backdrop{display:none}
+  @media(max-width:860px){
+    .menu-backdrop{display:block;position:fixed;top:0;left:0;width:100vw;height:100dvh;background:rgba(15,23,42,.5);opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:0}
+    .menu-backdrop.open{opacity:1;pointer-events:auto}
+    nav.links{position:fixed;top:0;left:0;height:100dvh;width:78%;max-width:300px;background:#fff;flex-direction:column;align-items:stretch;padding:5.5rem 1.1rem 1.5rem;border-right:1px solid var(--border);transform:translateX(-100%);transition:transform .35s cubic-bezier(.4,0,.2,1);gap:.2rem;box-shadow:10px 0 32px rgba(0,0,0,.18);overflow-y:auto;z-index:1}
+    nav.links.open{transform:translateX(0)}
+    .menu-btn{display:block}
+    .nav-dropdown>button{width:100%;justify-content:space-between}
+    .nav-dropdown-menu{position:static;box-shadow:none;border:none;display:none;padding-left:1rem;margin-top:.2rem}
+    .nav-dropdown.open .nav-dropdown-menu{display:block}
+  }
+
+  /* HERO */
+  .hero{position:relative;padding:5rem 0 4rem;background:var(--grad-hero);color:#fff;overflow:hidden}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none}
+  .hero-video.active{display:block}
+  .hero-yt-wrap{position:absolute;inset:0;overflow:hidden;z-index:0;display:none;pointer-events:none}
+  .hero-yt-wrap.active{display:block}
+  .hero-yt-wrap iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;transform:translate(-50%,-50%);border:0}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(20,83,45,.55) 0%,rgba(15,50,30,.4) 45%,rgba(0,0,0,.35) 100%);z-index:1;display:none}
+  .hero-overlay.active{display:block}
+  .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(60px);opacity:.4;z-index:1}
+  .hero::before{width:400px;height:400px;background:#fde68a;top:-100px;right:-100px;animation:float 8s ease-in-out infinite}
+  .hero::after{width:300px;height:300px;background:#22c55e;bottom:-80px;left:-80px;animation:float 10s ease-in-out infinite reverse}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+  .hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.25;margin-bottom:1rem;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+  .hero p.lead{font-size:1.05rem;opacity:.95;margin-bottom:1.5rem;line-height:1.7;max-width:620px}
+  .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;border-radius:.7rem;font-weight:600;transition:.25s;border:1px solid transparent}
+  .btn-gold{background:var(--grad-gold);color:var(--primary-dark);box-shadow:0 6px 18px rgba(212,160,23,.4)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(212,160,23,.55)}
+  .btn-outline{border-color:rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.08)}
+  .btn-outline:hover{background:#fff;color:var(--primary-dark)}
+  .btn-primary{background:var(--grad-forest);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-elegant)}
+  .btn-ghost{background:#fff;border-color:var(--border);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+  .btn-danger{background:var(--danger);color:#fff}
+
+  .hero-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(14px);border-radius:1.25rem;padding:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .stat{text-align:center;padding:1rem;background:rgba(255,255,255,.08);border-radius:.9rem}
+  .stat-n{font-size:2rem;font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat-l{font-size:.85rem;opacity:.9;margin-top:.25rem}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-card{grid-template-columns:1fr 1fr}}
+  .home-slider{position:relative;margin-top:2.5rem;border-radius:1.25rem;overflow:hidden;box-shadow:var(--shadow-elegant);aspect-ratio:16/9;background:var(--grad-forest)}
+  .hs-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:flex-end;pointer-events:none}
+  .hs-slide.active{opacity:1;pointer-events:auto}
+  .hs-slide img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transform:scale(1.06);transition:transform 6s ease-out}
+  .hs-slide.active img{transform:scale(1)}
+  .hs-slide .hs-fallback{width:100%;height:100%;position:absolute;inset:0;display:grid;place-items:center;font-size:3rem;background:var(--grad-forest)}
+  .hs-cap{position:relative;z-index:1;width:100%;padding:1.5rem 1.75rem;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent);color:#fff;font-weight:600;opacity:0;transform:translateY(10px);transition:opacity .8s ease .3s,transform .8s ease .3s}
+  .hs-slide.active .hs-cap{opacity:1;transform:translateY(0)}
+  .hs-cap:empty{display:none}
+  .hs-dots{position:absolute;bottom:.9rem;right:1.25rem;z-index:2;display:flex;gap:.4rem}
+  .hs-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;border:none;padding:0;transition:width .35s ease,background .35s ease}
+  .hs-dot.active{background:#fff;width:22px;border-radius:6px}
+  .hs-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:36px;height:36px;border-radius:50%;border:none;background:rgba(0,0,0,.35);color:#fff;font-size:1.1rem;cursor:pointer;display:grid;place-items:center;transition:background .25s ease,transform .25s ease}
+  .hs-arrow:hover{background:rgba(0,0,0,.55);transform:translateY(-50%) scale(1.08)}
+  .hs-prev{left:1rem}.hs-next{right:1rem}
+  @media(max-width:640px){.home-slider{aspect-ratio:16/9}}
+
+  /* SECTION */
+  section.page{padding:3.5rem 0}
+  .page-head{text-align:center;margin-bottom:2.5rem}
+  .page-head h2{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--primary-dark);font-weight:800}
+  .page-head p{color:var(--muted);margin-top:.5rem}
+  .page-head .accent{width:80px;height:4px;background:var(--grad-gold);border-radius:99px;margin:.9rem auto 0}
+
+  .grid{display:grid;gap:1.25rem}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:860px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:540px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.4rem;box-shadow:var(--shadow-soft);transition:.25s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-elegant);border-color:rgba(21,128,61,.3)}
+  .icon-box{width:52px;height:52px;border-radius:.85rem;background:var(--grad-gold);display:grid;place-items:center;font-size:1.5rem;transition:.3s}
+  .card:hover .icon-box{transform:rotate(8deg) scale(1.08)}
+  .card h3{margin:.9rem 0 .4rem;color:var(--primary-dark);font-size:1.1rem}
+  .card p{color:var(--muted);font-size:.92rem;line-height:1.65}
+
+  /* COMMITTEE */
+  .member{text-align:center;background:var(--card);border:1px solid var(--border);padding:1.4rem;border-radius:1rem;box-shadow:var(--shadow-soft);transition:.25s}
+  .member:hover{transform:translateY(-4px);box-shadow:var(--shadow-elegant)}
+  .avatar{width:80px;height:80px;border-radius:50%;background:var(--grad-forest);color:#fff;font-size:1.8rem;font-weight:700;display:grid;place-items:center;margin:0 auto;box-shadow:0 0 0 4px rgba(212,160,23,.2);transition:.25s}
+  .member:hover .avatar{box-shadow:0 0 0 6px rgba(212,160,23,.5)}
+  .badge{display:inline-block;padding:.3rem .8rem;border-radius:99px;font-size:.78rem;font-weight:600;background:var(--grad-gold);color:var(--primary-dark);margin-top:.5rem}
+  .badge-soft-gold{background:rgba(212,160,23,.18);color:var(--primary-dark)}
+  .badge-soft-green{background:rgba(22,163,74,.15);color:var(--success)}
+  .badge-soft-blue{background:rgba(37,99,235,.15);color:#1d4ed8}
+
+  /* ACTIVITY / NOTICE */
+  .row{display:flex;gap:1rem;background:var(--card);border:1px solid var(--border);padding:1.2rem;border-radius:1rem;box-shadow:var(--shadow-soft);transition:.25s}
+  .row:hover{box-shadow:var(--shadow-elegant);transform:translateY(-2px)}
+  .row.notice{border-left:4px solid var(--gold);padding:.8rem 1rem;gap:.75rem}
+  .row.notice .icon-box{width:38px;height:38px;font-size:1.05rem;border-radius:.6rem}
+  .row.notice h3{font-size:.82rem;font-weight:700;margin:0;line-height:1.3}
+  .row.notice small{font-size:.76rem!important;margin-top:.3rem!important}
+  .row.notice .btn{padding:.45rem .85rem;font-size:.8rem}
+  .notice-list-flat{border-top:1px solid var(--border)}
+  .notice-row{display:flex;align-items:center;gap:1rem;padding:1rem .25rem;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;cursor:pointer;transition:background .2s;background:none;border-left:none;border-right:none;border-top:none;width:100%;text-align:left;font:inherit}
+  .notice-row:hover{background:var(--bg)}
+  .notice-date-box{flex-shrink:0;width:74px;height:56px;background:var(--bg);border:1px solid var(--border);border-radius:.6rem;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.72rem;font-weight:700;color:var(--muted);padding:.3rem;line-height:1.3}
+  .notice-row-title{flex:1;min-width:0;font-size:.85rem;font-weight:700;color:var(--primary-dark);line-height:1.45;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+  .notice-chevron{flex-shrink:0;color:var(--muted);font-size:1.4rem;line-height:1}
+  @keyframes badgeNewPulse{
+    0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(212,160,23,.55)}
+    50%{transform:scale(1.1);box-shadow:0 0 0 7px rgba(212,160,23,0)}
+  }
+  .badge-new{background:var(--gold);color:#fff;font-size:.68rem;padding:.15rem .55rem;border-radius:999px;font-weight:700;flex-shrink:0;display:inline-block;animation:badgeNewPulse 1.3s ease-in-out infinite}
+  .date-box{width:84px;background:var(--grad-forest);color:#fff;border-radius:.85rem;text-align:center;padding:.7rem;flex-shrink:0}
+  .date-box .d{font-size:1.6rem;font-weight:800}
+  .date-box .m{font-size:.78rem;opacity:.9}
+  .activities-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.25rem}
+  .corners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .corner-card{border-radius:1rem;overflow:hidden;box-shadow:var(--shadow-soft);background:#eff6ff;transition:.25s}
+  .corner-card:hover{box-shadow:var(--shadow-elegant);transform:translateY(-3px)}
+  .corner-header{display:flex;align-items:center;gap:.7rem;padding:1.1rem 1.3rem}
+  .corner-header .corner-icon{font-size:1.7rem}
+  .corner-header h3{font-size:1.1rem;font-weight:800;color:#fff;margin:0}
+  .corner-body{padding:.5rem 1.3rem 1rem}
+  .corner-link{display:flex;align-items:center;gap:.55rem;width:100%;text-align:left;background:none;border:none;padding:.7rem 0;font-size:.92rem;font-weight:600;color:var(--text);cursor:pointer;border-bottom:1px dashed var(--border)}
+  .corner-link:last-child{border-bottom:none}
+  .corner-link:hover{color:var(--primary)}
+  .corner-link .tick{color:var(--success);font-weight:800;flex-shrink:0}
+  .corner-empty{color:var(--muted);font-size:.85rem;padding:.6rem 0}
+  .act-slider-wrap{max-width:340px;margin:0 auto;position:relative}
+  .act-slider{position:relative;min-height:400px}
+  .act-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease;pointer-events:none}
+  .act-slide.active{opacity:1;pointer-events:auto}
+  .act-arrow{position:absolute;top:38%;transform:translateY(-50%);z-index:2;width:36px;height:36px;border-radius:50%;border:none;background:rgba(0,0,0,.4);color:#fff;font-size:1.1rem;cursor:pointer;display:grid;place-items:center;transition:.25s}
+  .act-arrow:hover{background:rgba(0,0,0,.6)}
+  .act-prev{left:-14px}
+  .act-next{right:-14px}
+  @media(max-width:420px){.act-prev{left:-6px}.act-next{right:-6px}}
+  .cd-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.8rem;margin-bottom:1.75rem}
+  .cd-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:.8rem;box-shadow:var(--shadow-soft);transition:.25s}
+  .cd-gallery img:hover{transform:scale(1.03);box-shadow:var(--shadow-elegant)}
+  .activity-card{background:var(--card);border:1px solid var(--border);border-radius:1rem;overflow:hidden;box-shadow:var(--shadow-soft);transition:.25s;display:flex;flex-direction:column}
+  .activity-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-elegant)}
+  .activity-thumb{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+  .activity-thumb-fallback{width:100%;aspect-ratio:4/3;display:grid;place-items:center;font-size:2.2rem;background:var(--grad-forest);color:#fff}
+  .activity-body{padding:1rem;display:flex;flex-direction:column;gap:.8rem;flex:1}
+  .activity-body h3{color:var(--primary-dark);font-size:.98rem;line-height:1.4;flex:1;margin:0}
+  .act-page-btn{min-width:40px;justify-content:center;padding:.55rem .9rem}
+  .act-page-btn:disabled{opacity:.4;cursor:not-allowed}
+
+  /* GALLERY */
+  .tile{aspect-ratio:1/1;background:var(--grad-forest);color:#fff;border-radius:1rem;display:grid;place-items:center;font-size:3.5rem;position:relative;overflow:hidden;transition:.25s;cursor:pointer}
+  .tile:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow-elegant)}
+  .tile .cap{position:absolute;left:0;right:0;bottom:0;padding:.6rem;background:rgba(0,0,0,.55);font-size:.8rem;text-align:center;backdrop-filter:blur(6px)}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tile .play-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.5);display:grid;place-items:center;font-size:1.4rem;z-index:1}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  @media(max-width:740px){.contact-grid{grid-template-columns:1fr}}
+  .field{margin-bottom:.9rem}
+  .field label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:.3rem}
+
+  /* FOOTER */
+  footer.site{background:var(--primary-dark);color:#fff;padding:2.5rem 0 1.2rem;margin-top:2rem}
+  footer.site .grid-3{margin-bottom:1.5rem}
+  footer h4{color:var(--gold-light);margin-bottom:.6rem;font-size:1rem}
+  footer p,footer a{color:rgba(255,255,255,.85);font-size:.92rem;line-height:1.8}
+  footer .copy{border-top:1px solid rgba(255,255,255,.15);padding-top:1rem;text-align:center;font-size:.85rem;opacity:.8}
+
+  /* MODAL */
+  .modal{position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:1rem;z-index:90}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;border-radius:1rem;padding:1.5rem;max-width:520px;width:100%;box-shadow:var(--shadow-elegant);max-height:90vh;overflow-y:auto}
+  .modal-box h3{color:var(--primary-dark);margin-bottom:1rem}
+  .modal-actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1rem}
+
+  /* ============ ADMIN ============ */
+  .admin{display:none;min-height:100vh;background:#f1f5f9}
+  .admin.active{display:grid;grid-template-columns:280px 1fr}
+  .admin.collapsed{grid-template-columns:0 1fr}
+  .admin.collapsed .sidebar{transform:translateX(-100%)}
+
+  .sidebar{background:var(--grad-forest);color:#fff;padding:1.2rem;height:100vh;position:sticky;top:0;transition:.3s;overflow-y:auto}
+  .sidebar h2{color:var(--gold-light);font-size:1.1rem;margin-bottom:.2rem}
+  .sidebar .sub{font-size:.78rem;opacity:.8;margin-bottom:1.5rem}
+  .side-nav{display:flex;flex-direction:column;gap:.3rem}
+  .side-nav button{display:flex;align-items:center;gap:.7rem;padding:.7rem .9rem;border-radius:.6rem;color:#fff;text-align:right;font-size:.95rem;transition:.2s}
+  .side-nav button:hover{background:rgba(255,255,255,.12)}
+  .side-nav button.active{background:var(--grad-gold);color:var(--primary-dark);font-weight:700;box-shadow:0 4px 12px rgba(212,160,23,.4)}
+
+  .admin-main{display:flex;flex-direction:column;min-width:0}
+  .admin-top{background:#fff;border-bottom:1px solid var(--border);padding:.9rem 1.2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:30}
+  .hamburger{width:42px;height:42px;border-radius:.6rem;background:#f1f5f9;border:1px solid var(--border);display:grid;place-items:center;transition:.2s}
+  .hamburger:hover{background:var(--primary);border-color:var(--primary)}
+  .hamburger:hover span{background:#fff}
+  .hamburger span{display:block;width:20px;height:2px;background:var(--text);margin:3px auto;border-radius:2px;transition:.25s}
+  .admin-top h1{font-size:1.15rem;color:var(--primary-dark);flex:1}
+  .admin-content{padding:1.5rem;flex:1}
+  .admin-section{display:none}
+  .admin-section.active{display:block}
+  .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:.6rem}
+  .section-head h2{color:var(--primary-dark);font-size:1.35rem}
+
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+  @media(max-width:860px){.stat-row{grid-template-columns:repeat(2,1fr)}}
+  .stat-card{background:#fff;border:1px solid var(--border);border-radius:1rem;padding:1.2rem;box-shadow:var(--shadow-soft);position:relative;overflow:hidden}
+  .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad-forest)}
+  .stat-card .l{color:var(--muted);font-size:.85rem;margin-bottom:.4rem}
+  .stat-card .n{font-size:1.9rem;font-weight:800;color:var(--primary-dark)}
+  .stat-card .i{position:absolute;top:1rem;left:1rem;font-size:1.7rem;opacity:.25}
+
+  table.admin-tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:.8rem;overflow:hidden;box-shadow:var(--shadow-soft)}
+  table.admin-tbl th,table.admin-tbl td{padding:.85rem 1rem;text-align:right;border-bottom:1px solid var(--border);font-size:.92rem}
+  table.admin-tbl th{background:#f8fafc;color:var(--primary-dark);font-weight:700;font-size:.85rem}
+  table.admin-tbl tr:last-child td{border-bottom:0}
+  table.admin-tbl tr:hover td{background:#f8fafc}
+  table.member-tbl{width:100%;min-width:480px;border-collapse:collapse;background:#fff;border-radius:1rem;overflow:hidden;box-shadow:var(--shadow-soft)}
+  table.member-tbl th,table.member-tbl td{padding:.9rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem}
+  table.member-tbl th{background:var(--bg);color:var(--primary-dark);font-weight:700;font-size:.82rem}
+  table.member-tbl tr:last-child td{border-bottom:0}
+  table.member-tbl tr:hover td{background:var(--bg)}
+  .m-avatar{width:44px;height:44px;border-radius:50%;background:var(--grad-forest);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;overflow:hidden;font-size:.95rem}
+  .m-avatar img{width:100%;height:100%;object-fit:cover}
+  .blood-badge{display:inline-block;padding:.25rem .65rem;border-radius:.5rem;background:rgba(220,38,38,.1);color:var(--danger);font-weight:800;font-size:.82rem}
+  .row-actions{display:flex;gap:.4rem;justify-content:flex-end}
+  .btn-sm{padding:.4rem .7rem;border-radius:.5rem;font-size:.82rem;font-weight:600}
+
+  .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:45}
+
+  /* STANDALONE PUBLIC PAGES (about, committee) - hidden from continuous home scroll,
+     shown as a dedicated full page when navigated to */
+  .page-section.standalone{display:none}
+  #public.show-standalone .page-section:not(.standalone){display:none}
+  #public.show-standalone .page-section.standalone.active{display:block}
+
+  @media(max-width:760px){
+    .admin.active{grid-template-columns:1fr}
+    .sidebar{position:fixed;top:0;right:0;width:80%;max-width:300px;z-index:50;transform:translateX(100%);box-shadow:-4px 0 20px rgba(0,0,0,.25)}
+    /* sidebar is hidden by default on mobile; only shown when explicitly opened via .sb-open */
+    .admin.active.sb-open .sidebar{transform:translateX(0)}
+    .admin.active.sb-open .sidebar-overlay{display:block}
+    .hamburger{position:relative;z-index:51}
+  }
+
+  /* LOGIN */
+  .login-wrap{min-height:100vh;display:grid;place-items:center;background:var(--grad-hero);padding:1rem}
+  .login-card{background:#fff;border-radius:1.2rem;padding:2rem;max-width:400px;width:100%;box-shadow:var(--shadow-elegant)}
+  .login-card h2{color:var(--primary-dark);text-align:center;margin-bottom:.3rem}
+  .login-card p{color:var(--muted);text-align:center;margin-bottom:1.5rem;font-size:.9rem}
+
+  /* TOAST */
+  .toast{position:fixed;top:1rem;left:50%;transform:translateX(-50%);background:var(--primary-dark);color:#fff;padding:.8rem 1.4rem;border-radius:.7rem;box-shadow:var(--shadow-elegant);z-index:100;opacity:0;pointer-events:none;transition:.3s}
+  .toast.show{opacity:1;top:1.5rem}
+
+  .hide{display:none!important}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- ============ PUBLIC SITE ============ -->
+<div id="public">
+<header class="site">
+  <div class="container nav">
+    <a href="#home" class="logo" data-nav="home">
+      <div class="logo-mark">আ</div>
+      <div>
+        <div class="logo-name" id="brand-name">আল-নূর সমাজকল্যাণ সংগঠন</div>
+        <div class="logo-sub">মানবতার সেবায় নিবেদিত</div>
+      </div>
+    </a>
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <nav class="links" id="mainNav">
+      <a href="#home" data-nav="home" class="active">হোম</a>
+      <a href="#about" data-nav="about">পরিচিতি</a>
+      <div class="nav-dropdown" id="adminNavDropdown">
+        <button type="button" onclick="toggleNavDropdown(event)">প্রশাসন <span style="font-size:.7em">▾</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="#committee" data-nav="committee">কার্যনির্বাহী পর্ষদ</a>
+          <a href="#general-members" data-nav="general-members">সাধারণ সদস্য</a>
+        </div>
+      </div>
+      <a href="#activities" data-nav="activities">কার্যক্রম</a>
+      <a href="#courses" data-nav="courses">স্কিল ডেভলপমেন্ট</a>
+      <a href="#notices" data-nav="notices">নোটিশ</a>
+      <a href="#gallery" data-nav="gallery">গ্যালারি</a>
+      <a href="#contact" data-nav="contact">যোগাযোগ</a>
+      <a href="#admin" data-nav="admin" style="background:var(--grad-gold);color:var(--primary-dark);font-weight:700">অ্যাডমিন</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="মেনু"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HOME -->
+<section id="home" class="hero page-section">
+  <video class="hero-video" id="hero-video" autoplay muted loop playsinline></video>
+  <div class="hero-yt-wrap" id="hero-yt-wrap"><iframe id="hero-yt" src="" allow="autoplay; encrypted-media" title="হিরো ব্যাকগ্রাউন্ড ভিডিও"></iframe></div>
+  <div class="hero-overlay" id="hero-overlay"></div>
+  <div class="container hero-grid">
+    <div>
+      <h1 id="hero-title">সমাজের পরিবর্তনে<br/>আমাদের একসাথে পথচলা</h1>
+      <p class="lead" id="hero-lead">আল-নূর সমাজকল্যাণ সংগঠন গত ১৪ বছর ধরে শিক্ষা, স্বাস্থ্য, খাদ্য সহায়তা ও পরিবেশ রক্ষায় কাজ করে যাচ্ছে — সততা, স্বচ্ছতা এবং মানবতার প্রতি অবিচল শ্রদ্ধা নিয়ে।</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-gold" data-nav="about">আমাদের সম্পর্কে জানুন →</a>
+        <a href="#contact" class="btn btn-outline" data-nav="contact">যোগাযোগ করুন</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="stat"><div class="stat-n" id="stat-n-1">৮০০+</div><div class="stat-l" id="stat-l-1">সহায়তাপ্রাপ্ত পরিবার</div></div>
+      <div class="stat"><div class="stat-n" id="stat-n-2">৫০+</div><div class="stat-l" id="stat-l-2">সম্পন্ন প্রকল্প</div></div>
+      <div class="stat"><div class="stat-n" id="stat-n-3">১৪</div><div class="stat-l" id="stat-l-3">বছরের পথচলা</div></div>
+      <div class="stat"><div class="stat-n" id="stat-n-4">১২০+</div><div class="stat-l" id="stat-l-4">সক্রিয় সদস্য</div></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="home-slider" id="home-slider"></div>
+  </div>
+</section>
+
+<!-- HOME ACTIVITIES PREVIEW -->
+<section id="home-activities" class="page page-section" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>📅 সাম্প্রতিক কার্যক্রম ও অনুষ্ঠান</h2><p>আমাদের সাম্প্রতিক উদ্যোগসমূহ</p><div class="accent"></div></div>
+    <div class="act-slider-wrap">
+      <div class="act-slider" id="home-activities-list"></div>
+      <div class="hs-dots" id="home-activities-dots" style="position:static;justify-content:center;margin-top:1.25rem"></div>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="#activities" class="btn btn-primary" data-nav="activities">সকল কার্যক্রম ও অনুষ্ঠান দেখুন →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page page-section standalone">
+  <div class="container">
+    <div class="page-head"><h2>📖 আমাদের সম্পর্কে</h2><p>লক্ষ্য, উদ্দেশ্য, ইতিহাস ও মূল্যবোধ</p><div class="accent"></div></div>
+    <div class="grid grid-3" id="about-cards"></div>
+  </div>
+</section>
+
+<!-- COMMITTEE -->
+<section id="committee" class="page page-section standalone" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>👥 কার্যনির্বাহী পর্ষদ</h2><p id="committee-session">সেশন: ২০২৪-২০২৬</p><div class="accent"></div></div>
+    <div class="grid grid-3" id="committee-list"></div>
+  </div>
+</section>
+
+<!-- GENERAL MEMBERS -->
+<section id="general-members" class="page page-section standalone" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>🧑‍🤝‍🧑 সাধারণ সদস্য</h2><p>সংগঠনের সাধারণ সদস্যবৃন্দ</p><div class="accent"></div></div>
+    <div style="overflow-x:auto">
+      <table class="member-tbl">
+        <thead><tr><th style="width:60px">ক্রমিক</th><th style="width:70px">ছবি</th><th>নাম</th><th>রক্তের গ্রুপ</th></tr></thead>
+        <tbody id="general-members-list"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities" class="page page-section standalone" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>📅 কার্যক্রম ও অনুষ্ঠান</h2><p>সম্পন্ন এবং আসন্ন কার্যক্রম</p><div class="accent"></div></div>
+    <div id="activities-filter" style="display:flex;justify-content:center;gap:.6rem;margin-bottom:1.5rem;flex-wrap:wrap"></div>
+    <div id="activities-list" class="activities-grid"></div>
+    <div id="activities-pagination" style="display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem;flex-wrap:wrap"></div>
+  </div>
+</section>
+
+<!-- ACTIVITY DETAIL PAGE -->
+<section id="activity-detail" class="page page-section standalone" style="background:#fff">
+  <div class="container" style="max-width:820px">
+    <p style="margin-bottom:1.5rem"><a href="#activities" data-nav="activities" style="color:var(--primary);font-weight:600">← কার্যক্রম তালিকায় ফিরুন</a></p>
+    <h2 id="ad-title" style="color:var(--primary-dark);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;margin-bottom:.7rem"></h2>
+    <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <span id="ad-status" class="badge" style="margin:0"></span>
+      <small id="ad-date" style="color:var(--muted)"></small>
+    </div>
+    <img id="ad-img" src="" alt="" style="width:100%;border-radius:1rem;margin-bottom:1.5rem;display:none;object-fit:cover;max-height:420px" onerror="this.style.display='none'" />
+    <p id="ad-desc" style="color:var(--text);line-height:1.9;white-space:pre-wrap"></p>
+  </div>
+</section>
+
+<!-- SKILL DEVELOPMENT (COURSES) -->
+<section id="courses" class="page page-section standalone" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>🎓 স্কিল ডেভলপমেন্ট</h2><p>সংগঠনের পক্ষ থেকে চলমান ও সম্পন্ন প্রশিক্ষণ কোর্সসমূহ</p><div class="accent"></div></div>
+    <div id="courses-list" style="display:flex;flex-direction:column;gap:.65rem"></div>
+  </div>
+</section>
+
+<!-- COURSE DETAIL PAGE -->
+<section id="course-detail" class="page page-section standalone" style="background:#fff">
+  <div class="container" style="max-width:820px">
+    <p style="margin-bottom:1.5rem"><a href="#courses" data-nav="courses" style="color:var(--primary);font-weight:600">← কোর্স তালিকায় ফিরুন</a></p>
+    <h2 id="cd-title" style="color:var(--primary-dark);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800;margin-bottom:.7rem"></h2>
+    <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <span id="cd-status" class="badge" style="margin:0"></span>
+      <small id="cd-date" style="color:var(--muted)"></small>
+    </div>
+    <div id="cd-gallery" class="cd-gallery"></div>
+    <p id="cd-desc" style="color:var(--text);line-height:1.9;white-space:pre-wrap"></p>
+  </div>
+</section>
+
+<!-- HOME NOTICES PREVIEW -->
+<section id="home-notices" class="page page-section" style="background:#fff">
+  <div class="container" style="max-width:780px">
+    <div class="page-head"><h2>📢 নোটিশ বোর্ড</h2><p>সর্বশেষ ঘোষণা ও বিজ্ঞপ্তি</p><div class="accent"></div></div>
+    <div id="home-notices-list" class="notice-list-flat"></div>
+    <a href="#notices" data-nav="notices" style="display:block;text-align:center;margin-top:1.5rem;padding:.9rem;border:1px solid var(--border);border-radius:.8rem;color:var(--primary-dark);font-weight:700;text-decoration:none;transition:.2s" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background='transparent'">সব নোটিশ দেখুন</a>
+  </div>
+</section>
+
+<!-- NOTICES -->
+<section id="notices" class="page page-section standalone" style="background:#fff">
+  <div class="container" style="max-width:780px">
+    <div class="page-head"><h2>📢 নোটিশ বোর্ড</h2><p>সর্বশেষ ঘোষণা ও বিজ্ঞপ্তি</p><div class="accent"></div></div>
+    <div id="notices-list" class="notice-list-flat"></div>
+    <div id="notices-pagination" style="display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem;flex-wrap:wrap"></div>
+  </div>
+</section>
+
+<!-- HOME CORNERS -->
+<section id="home-corners" class="page page-section" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>🗂️ গুরুত্বপূর্ণ কর্ণার</h2><p>দ্রুত প্রয়োজনীয় তথ্য ও লিংকসমূহ</p><div class="accent"></div></div>
+    <div class="corners-grid" id="home-corners-list"></div>
+  </div>
+</section>
+
+<!-- HOME GALLERY PREVIEW -->
+<section id="home-gallery" class="page page-section">
+  <div class="container">
+    <div class="page-head"><h2>🖼️ ছবির গ্যালারি</h2><p>আমাদের সাম্প্রতিক মুহূর্তসমূহ</p><div class="accent"></div></div>
+    <div class="grid grid-4" id="home-gallery-list"></div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="#gallery" class="btn btn-primary" data-nav="gallery">সকল ছবি ও ভিডিও দেখুন →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EMBED VIEW PAGE -->
+<section id="embed-view" class="page page-section standalone" style="background:#fff;padding:0">
+  <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1.1rem;border-bottom:1px solid var(--border);flex-wrap:wrap">
+    <a href="#home" data-nav="home" style="color:var(--primary);font-weight:600;white-space:nowrap;flex-shrink:0">← ফিরুন</a>
+    <h2 id="embed-title" style="color:var(--primary-dark);font-size:.95rem;font-weight:800;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></h2>
+    <a id="embed-fallback-link" href="#" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;font-size:.82rem;white-space:nowrap;flex-shrink:0">নতুন ট্যাবে খুলুন ↗</a>
+  </div>
+  <iframe id="embed-frame" src="" style="width:100%;height:calc(100dvh - 130px);border:0;display:block"></iframe>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="page page-section standalone" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>🖼️ ছবি ও ভিডিও গ্যালারি</h2><p>আমাদের কার্যক্রমের স্মৃতি</p><div class="accent"></div></div>
+    <div id="gallery-filter" style="display:flex;justify-content:center;gap:.6rem;margin-bottom:1.5rem;flex-wrap:wrap"></div>
+    <div class="grid grid-4" id="gallery-list"></div>
+  </div>
+</section>
+
+<!-- GALLERY LIGHTBOX -->
+<div class="modal" id="gallery-modal" onclick="if(event.target===this) closeGalleryItem()">
+  <div class="modal-box" style="max-width:720px;padding:.75rem">
+    <div id="gallery-modal-media" style="width:100%;border-radius:.7rem;overflow:hidden;background:#000"></div>
+    <p id="gallery-modal-caption" style="color:var(--text);text-align:center;margin-top:1rem;font-weight:600"></p>
+    <div class="modal-actions"><button class="btn" onclick="closeGalleryItem()">বন্ধ করুন</button></div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="page page-section standalone" style="background:#fff">
+  <div class="container">
+    <div class="page-head"><h2>📞 যোগাযোগ</h2><p>আমাদের সাথে যুক্ত হোন</p><div class="accent"></div></div>
+    <div class="contact-grid">
+      <div class="card">
+        <h3>📍 ঠিকানা</h3><p id="ct-addr"></p>
+        <h3 style="margin-top:1rem">📱 ফোন</h3><p id="ct-phone"></p>
+        <h3 style="margin-top:1rem">✉️ ইমেইল</h3><p id="ct-email"></p>
+      </div>
+      <form class="card" id="contact-form" onsubmit="sendContactMessage(event)">
+        <h3 style="margin-bottom:1rem">বার্তা পাঠান</h3>
+        <div class="field"><label>নাম</label><input required id="cf-name" placeholder="আপনার নাম" /></div>
+        <div class="field"><label>ফোন / ইমেইল</label><input required id="cf-contact" placeholder="যোগাযোগের মাধ্যম" /></div>
+        <div class="field"><label>বার্তা</label><textarea required id="cf-msg" rows="4" placeholder="আপনার বার্তা..."></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center">পাঠান</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container">
+    <div class="grid grid-3">
+      <div>
+        <h4 id="ft-name"></h4>
+        <p>মানবতার সেবায় নিবেদিত একটি অরাজনৈতিক সমাজকল্যাণ সংগঠন।</p>
+      </div>
+      <div>
+        <h4>দ্রুত লিঙ্ক</h4>
+        <p><a href="#about" data-nav="about">আমাদের সম্পর্কে</a></p>
+        <p><a href="#committee" data-nav="committee">কার্যনির্বাহী পর্ষদ</a></p>
+        <p><a href="#activities" data-nav="activities">কার্যক্রম</a></p>
+        <p><a href="#contact" data-nav="contact">যোগাযোগ</a></p>
+      </div>
+      <div>
+        <h4>যোগাযোগ</h4>
+        <p id="ft-addr"></p>
+        <p id="ft-phone"></p>
+        <p id="ft-email"></p>
+      </div>
+    </div>
+    <div class="copy">© <span id="yr"></span> <span id="ft-name2"></span> — সর্বস্বত্ব সংরক্ষিত</div>
+  </div>
+</footer>
+</div>
+
+<!-- ============ LOGIN ============ -->
+<div id="login" class="login-wrap hide">
+  <form class="login-card" onsubmit="doLogin(event)">
+    <div style="text-align:center;margin-bottom:1rem">
+      <div class="logo-mark" style="margin:0 auto;width:60px;height:60px;font-size:1.6rem">আ</div>
+    </div>
+    <h2>অ্যাডমিন লগইন</h2>
+    <p>ড্যাশবোর্ড অ্যাক্সেস করতে লগইন করুন</p>
+    <div class="field"><label>ইউজারনেম</label><input id="lg-user" required placeholder="admin" /></div>
+    <div class="field"><label>পাসওয়ার্ড</label><input id="lg-pass" type="password" required placeholder="••••" /></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:.5rem">লগইন করুন</button>
+    <p style="text-align:center;margin-top:1rem;font-size:.82rem">ডিফল্ট: <b>admin / 1234</b></p>
+    <p style="text-align:center;margin-top:.5rem"><a href="#home" data-nav="home" style="color:var(--primary)">← সাইটে ফিরুন</a></p>
+  </form>
+</div>
+
+<!-- ============ ADMIN ============ -->
+<div id="admin" class="admin">
+  <aside class="sidebar">
+    <h2>অ্যাডমিন প্যানেল</h2>
+    <div class="sub" id="sb-name">আল-নূর সমাজকল্যাণ</div>
+    <div class="side-nav" id="sideNav">
+      <button data-tab="dashboard" class="active">📊 ড্যাশবোর্ড</button>
+      <button data-tab="committee">👥 কার্যনির্বাহী পর্ষদ</button>
+      <button data-tab="generalMembers">🧑‍🤝‍🧑 সাধারণ সদস্য</button>
+      <button data-tab="activities">📅 কার্যক্রম</button>
+      <button data-tab="notices">📢 নোটিশ</button>
+      <button data-tab="gallery">🖼️ গ্যালারি</button>
+      <button data-tab="slides">🎞️ হোম স্লাইড</button>
+      <button data-tab="courses">🎓 স্কিল ডেভলপমেন্ট</button>
+      <button data-tab="corners">🗂️ কর্ণার</button>
+      <button data-tab="settings">⚙️ সেটিংস</button>
+      <button onclick="doLogout()" style="margin-top:1rem;background:rgba(220,38,38,.3)">🚪 লগআউট</button>
+      <a href="#home" data-nav="home" style="text-align:center;margin-top:.5rem;padding:.5rem;font-size:.85rem;opacity:.85">↗ পাবলিক সাইট দেখুন</a>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-top">
+      <button class="hamburger" id="hamBtn" aria-label="মেনু"><span></span><span></span><span></span></button>
+      <h1 id="admin-title">ড্যাশবোর্ড</h1>
+      <span class="badge badge-soft-green">✓ অ্যাডমিন</span>
+    </div>
+    <div class="sidebar-overlay" id="sbOverlay"></div>
+    <div class="admin-content">
+
+      <!-- DASHBOARD -->
+      <div class="admin-section active" data-pane="dashboard">
+        <div class="stat-row">
+          <div class="stat-card"><span class="i">👥</span><div class="l">কার্যনির্বাহী পর্ষদ</div><div class="n" id="s-com">0</div></div>
+          <div class="stat-card"><span class="i">🧑‍🤝‍🧑</span><div class="l">সাধারণ সদস্য</div><div class="n" id="s-gm">0</div></div>
+          <div class="stat-card"><span class="i">📅</span><div class="l">কার্যক্রম</div><div class="n" id="s-act">0</div></div>
+          <div class="stat-card"><span class="i">📢</span><div class="l">নোটিশ</div><div class="n" id="s-not">0</div></div>
+          <div class="stat-card"><span class="i">🖼️</span><div class="l">গ্যালারি</div><div class="n" id="s-gal">0</div></div>
+          <div class="stat-card"><span class="i">🎞️</span><div class="l">হোম স্লাইড</div><div class="n" id="s-slide">0</div></div>
+          <div class="stat-card"><span class="i">🎓</span><div class="l">কোর্স</div><div class="n" id="s-course">0</div></div>
+        </div>
+        <div class="card">
+          <h3 style="color:var(--primary-dark);margin-bottom:.6rem">👋 স্বাগতম!</h3>
+          <p style="color:var(--muted)">বাঁদিকের সাইডবার থেকে যেকোনো সেকশন এডিট করুন। সব পরিবর্তন স্বয়ংক্রিয়ভাবে আপনার ব্রাউজারে সেভ হয়।</p>
+        </div>
+      </div>
+
+      <!-- COMMITTEE -->
+      <div class="admin-section" data-pane="committee">
+        <div class="section-head"><h2>👥 কার্যনির্বাহী পর্ষদ ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('committee')">+ নতুন সদস্য</button></div>
+        <table class="admin-tbl"><thead><tr><th>ছবি</th><th>নাম</th><th>পদ</th><th>ফোন</th><th></th></tr></thead><tbody id="tbl-committee"></tbody></table>
+      </div>
+
+      <!-- GENERAL MEMBERS -->
+      <div class="admin-section" data-pane="generalMembers">
+        <div class="section-head"><h2>🧑‍🤝‍🧑 সাধারণ সদস্য ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('generalMembers')">+ নতুন সদস্য</button></div>
+        <table class="admin-tbl"><thead><tr><th>ছবি</th><th>নাম</th><th>ফোন</th><th>রক্তের গ্রুপ</th><th></th></tr></thead><tbody id="tbl-generalMembers"></tbody></table>
+      </div>
+
+      <!-- ACTIVITIES -->
+      <div class="admin-section" data-pane="activities">
+        <div class="section-head"><h2>📅 কার্যক্রম ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('activities')">+ নতুন কার্যক্রম</button></div>
+        <table class="admin-tbl"><thead><tr><th>ছবি</th><th>শিরোনাম</th><th>তারিখ</th><th>অবস্থা</th><th></th></tr></thead><tbody id="tbl-activities"></tbody></table>
+      </div>
+
+      <!-- NOTICES -->
+      <div class="admin-section" data-pane="notices">
+        <div class="section-head"><h2>📢 নোটিশ ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('notices')">+ নতুন নোটিশ</button></div>
+        <table class="admin-tbl"><thead><tr><th>শিরোনাম</th><th></th></tr></thead><tbody id="tbl-notices"></tbody></table>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="admin-section" data-pane="gallery">
+        <div class="section-head"><h2>🖼️ গ্যালারি ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('gallery')">+ নতুন আইটেম</button></div>
+        <table class="admin-tbl"><thead><tr><th>প্রিভিউ</th><th>ধরন</th><th>ক্যাপশন</th><th></th></tr></thead><tbody id="tbl-gallery"></tbody></table>
+      </div>
+
+      <!-- SLIDES -->
+      <div class="admin-section" data-pane="slides">
+        <div class="section-head"><h2>🎞️ হোম পেইজ স্লাইড ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('slides')">+ নতুন স্লাইড</button></div>
+        <p style="color:var(--muted);margin-bottom:1rem;font-size:.88rem">হোম পেইজে পরিসংখ্যান কার্ডের নিচে এই স্লাইডশোটি দেখা যাবে। ছবি না দিলে ক্যাপশনসহ একটি ডিফল্ট প্যানেল দেখানো হবে।</p>
+        <table class="admin-tbl"><thead><tr><th>ছবি</th><th>ক্যাপশন</th><th></th></tr></thead><tbody id="tbl-slides"></tbody></table>
+      </div>
+
+      <!-- COURSES -->
+      <div class="admin-section" data-pane="courses">
+        <div class="section-head"><h2>🎓 স্কিল ডেভলপমেন্ট ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('courses')">+ নতুন কোর্স</button></div>
+        <table class="admin-tbl"><thead><tr><th>শিরোনাম</th><th>অবস্থা</th><th></th></tr></thead><tbody id="tbl-courses"></tbody></table>
+      </div>
+
+      <!-- CORNERS -->
+      <div class="admin-section" data-pane="corners">
+        <div class="section-head"><h2>🗂️ কর্ণার ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('corners')">+ নতুন কর্ণার</button></div>
+        <p style="color:var(--muted);margin-bottom:1rem;font-size:.88rem">হোম পেজে গ্যালারির উপরে এই কর্ণারগুলো দেখা যাবে। প্রতিটা কর্ণারের নিচে "লেবেল | লিংক" ফরম্যাটে একাধিক বাটন যোগ করা যাবে (প্রতি লাইনে একটি)। বাটনে ক্লিক করলে লিংকটি সাইটের ভেতরেই একটা নতুন পেজে embed হয়ে দেখাবে।</p>
+        <table class="admin-tbl"><thead><tr><th>আইকন</th><th>শিরোনাম</th><th>কালার</th><th>লিংক সংখ্যা</th><th></th></tr></thead><tbody id="tbl-corners"></tbody></table>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="admin-section" data-pane="settings">
+        <div class="section-head"><h2>⚙️ সাইট সেটিংস</h2></div>
+        <form class="card" onsubmit="saveSettings(event)" style="max-width:680px">
+          <div class="field">
+            <label>লোগো (গুগল ড্রাইভ লিংক)</label>
+            <input id="st-logo" placeholder="https://drive.google.com/file/d/xxxxxxxx/view" oninput="previewLogo()" />
+            <small style="color:var(--muted);display:block;margin-top:.3rem">ড্রাইভে ছবিটি আপলোড করে "Anyone with the link" শেয়ার করুন, তারপর শেয়ার লিংকটি এখানে পেস্ট করুন।</small>
+            <div style="margin-top:.6rem;display:flex;align-items:center;gap:.6rem">
+              <span style="font-size:.8rem;color:var(--muted)">প্রিভিউ:</span>
+              <div class="logo-mark" id="logo-preview" style="width:46px;height:46px">আ</div>
+            </div>
+          </div>
+          <div class="field">
+            <label>হেডার ব্যাকগ্রাউন্ড ছবি (গুগল ড্রাইভ লিংক)</label>
+            <input id="st-header" placeholder="https://drive.google.com/file/d/xxxxxxxx/view" oninput="previewHeaderImage()" />
+            <small style="color:var(--muted);display:block;margin-top:.3rem">ছবিটি হেডারের ডান দিকে ধীরে ধীরে ফুটে উঠবে (বাম দিক সাদা থাকবে)। ফাঁকা রাখলে সাদা হেডার দেখাবে।</small>
+            <div id="header-preview" style="margin-top:.6rem;height:70px;border-radius:.6rem;background-size:cover;background-position:center;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem">কোনো ছবি সেট করা নেই</div>
+          </div>
+          <div class="field">
+            <label>হিরো সেকশনের ব্যাকগ্রাউন্ড ভিডিও (YouTube লিংক অথবা mp4 লিংক)</label>
+            <input id="st-hero-video" placeholder="https://youtube.com/watch?v=xxxx অথবা https://example.com/video.mp4" oninput="previewHeroVideo()" />
+            <small style="color:var(--muted);display:block;margin-top:.3rem">YouTube ভিডিও লিংক (watch/শর্টস/youtu.be — যেকোনো ফরম্যাট) অথবা সরাসরি .mp4 লিংক দেওয়া যাবে। ফাঁকা রাখলে আগের মতো রঙিন গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড দেখাবে।</small>
+            <div id="hero-video-preview" style="margin-top:.6rem;width:100%;max-width:320px;height:100px;border-radius:.6rem;background:var(--grad-hero);display:none;overflow:hidden;position:relative"></div>
+          </div>
+          <div class="field">
+            <label>হোম পেজের প্রধান শিরোনাম (একাধিক লাইনের জন্য এন্টার দিন)</label>
+            <textarea id="st-hero-title" rows="2" placeholder="সমাজের পরিবর্তনে&#10;আমাদের একসাথে পথচলা"></textarea>
+          </div>
+          <div class="field">
+            <label>হোম পেজের বর্ণনা লেখা</label>
+            <textarea id="st-hero-lead" rows="3"></textarea>
+          </div>
+          <div class="field">
+            <label>পরিসংখ্যান কার্ড (৪টি সংখ্যা ও লেবেল)</label>
+            <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:.6rem;margin-top:.4rem">
+              <input id="st-stat-n-1" placeholder="সংখ্যা, যেমন ৮০০+" />
+              <input id="st-stat-l-1" placeholder="লেবেল, যেমন সহায়তাপ্রাপ্ত পরিবার" />
+              <input id="st-stat-n-2" placeholder="সংখ্যা" />
+              <input id="st-stat-l-2" placeholder="লেবেল" />
+              <input id="st-stat-n-3" placeholder="সংখ্যা" />
+              <input id="st-stat-l-3" placeholder="লেবেল" />
+              <input id="st-stat-n-4" placeholder="সংখ্যা" />
+              <input id="st-stat-l-4" placeholder="লেবেল" />
+            </div>
+          </div>
+          <div class="field"><label>সংগঠনের নাম</label><input id="st-name" /></div>
+          <div class="field"><label>কার্যনির্বাহী পর্ষদের সেশন</label><input id="st-committee-session" placeholder="যেমন ২০২৪-২০২৬" /></div>
+          <div class="field"><label>ঠিকানা</label><input id="st-addr" /></div>
+          <div class="field"><label>ফোন</label><input id="st-phone" /></div>
+          <div class="field"><label>ইমেইল</label><input id="st-email" type="email" /></div>
+          <div class="field">
+            <label>Web3Forms Access Key (স্বয়ংক্রিয় ইমেইল পাঠানোর জন্য)</label>
+            <input id="st-w3f" placeholder="আপনার Web3Forms Access Key পেস্ট করুন" />
+            <small style="color:var(--muted);display:block;margin-top:.3rem">
+              <a href="https://web3forms.com" target="_blank" rel="noopener" style="color:var(--primary)">web3forms.com</a> এ গিয়ে উপরের ইমেইল ঠিকানা দিয়ে বিনামূল্যে সাইন আপ করে একটা Access Key নিন — বার্তাগুলো সরাসরি সেই ইমেইলেই পৌঁছে যাবে, কোনো মেইল অ্যাপ খুলবে না। Key খালি রাখলে ভিজিটরের ইমেইল অ্যাপ খুলে যাবে (আগের পদ্ধতি)।
+            </small>
+          </div>
+          <div class="field"><label>অ্যাডমিন পাসওয়ার্ড</label><input id="st-pass" /></div>
+          <button class="btn btn-primary">সেভ করুন</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FORM -->
+<div class="modal" id="modal"><div class="modal-box">
+  <h3 id="md-title">ফর্ম</h3>
+  <form id="md-form" onsubmit="saveForm(event)"></form>
+</div></div>
+
+<!-- DELETE CONFIRMATION MODAL -->
+<div class="modal" id="confirm-modal" onclick="if(event.target===this) closeConfirmModal()">
+  <div class="modal-box" style="max-width:380px;text-align:center">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(220,38,38,.1);display:grid;place-items:center;margin:0 auto 1rem;font-size:1.8rem">🗑️</div>
+    <h3 style="margin-bottom:.5rem">মুছে ফেলবেন?</h3>
+    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:.9rem">এই এন্ট্রিটি স্থায়ীভাবে মুছে যাবে। এই কাজটি পূর্বাবস্থায় ফেরানো যাবে না।</p>
+    <div class="modal-actions" style="justify-content:center;gap:.8rem">
+      <button type="button" class="btn btn-ghost" onclick="closeConfirmModal()">বাতিল করুন</button>
+      <button type="button" class="btn btn-danger" onclick="confirmDelete()">হ্যাঁ, মুছে ফেলুন</button>
+    </div>
+  </div>
+</div>
+
+<!-- NOTICE DETAILS MODAL (public) -->
+<div class="modal" id="notice-modal" onclick="if(event.target===this) closeNotice()">
+  <div class="modal-box">
+    <h3 id="notice-modal-title">নোটিশ</h3>
+    <small id="notice-modal-date" style="color:var(--muted);display:block;margin-bottom:1rem">📅</small>
+    <p id="notice-modal-body" style="color:var(--text);line-height:1.8;white-space:pre-wrap"></p>
+    <div class="modal-actions"><button class="btn" onclick="closeNotice()">বন্ধ করুন</button></div>
+  </div>
+</div>
+
+
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========= STATE ========= */
+const DEFAULT={
+  committee:[
+    {id:1,name:'মোঃ আব্দুর রহমান',role:'সভাপতি',phone:'০১৭১১-১১১১১১',avatar:'আ',imageUrl:''},
+    {id:2,name:'মোঃ ইব্রাহীম খলিল',role:'সাধারণ সম্পাদক',phone:'০১৮২২-২২২২২২',avatar:'ই',imageUrl:''},
+    {id:3,name:'মোসাম্মৎ রহিমা বেগম',role:'কোষাধ্যক্ষ',phone:'০১৯৩৩-৩৩৩৩৩৩',avatar:'র',imageUrl:''},
+    {id:4,name:'মোঃ সালাউদ্দিন',role:'সাংগঠনিক সম্পাদক',phone:'০১৬৪৪-৪৪৪৪৪৪',avatar:'স',imageUrl:''},
+    {id:5,name:'নুরুন্নাহার আক্তার',role:'সমাজকল্যাণ সম্পাদক',phone:'০১৫৫৫-৫৫৫৫৫৫',avatar:'ন',imageUrl:''},
+    {id:6,name:'মোঃ কামরুজ্জামান',role:'প্রচার সম্পাদক',phone:'০১৭৬৬-৬৬৬৬৬৬',avatar:'ক',imageUrl:''}
+  ],
+  generalMembers:[
+    {id:101,name:'মোঃ রফিকুল ইসলাম',phone:'০১৭০০-০০০০০১',avatar:'র',imageUrl:'',bloodGroup:'B+'},
+    {id:102,name:'ফাতেমা খাতুন',phone:'০১৭০০-০০০০০২',avatar:'ফ',imageUrl:'',bloodGroup:'A+'},
+    {id:103,name:'মোঃ আনিসুর রহমান',phone:'০১৭০০-০০০০০৩',avatar:'আ',imageUrl:'',bloodGroup:'O+'}
+  ],
+  activities:[
+    {id:11,title:'বার্ষিক সাধারণ সভা ২০২৫',date:'২০২৫-০১-১৫',desc:'বার্ষিক পরিকল্পনা ও হিসাব পর্যালোচনা',status:'done',imageUrl:''},
+    {id:12,title:'বিনামূল্যে স্বাস্থ্য শিবির',date:'২০২৫-০২-১০',desc:'স্থানীয় বাসিন্দাদের জন্য বিনামূল্যে চিকিৎসা সেবা',status:'done',imageUrl:''},
+    {id:13,title:'রমজান খাদ্য সহায়তা',date:'২০২৫-০৩-০১',desc:'অসহায় পরিবারগুলোতে খাদ্য সামগ্রী বিতরণ',status:'upcoming',imageUrl:''},
+    {id:14,title:'বৃক্ষরোপণ অভিযান',date:'২০২৫-০৪-০৫',desc:'পরিবেশ রক্ষায় এলাকায় গাছ লাগানো',status:'upcoming',imageUrl:''}
+  ],
+  notices:[
+    {id:21,title:'মাসিক সভার নোটিশ',body:'আগামী ১৫ তারিখ সন্ধ্যা ৬টায় মাসিক সভা অনুষ্ঠিত হবে।',date:'২০২৫-০১-১০'},
+    {id:22,title:'চাঁদা পরিশোধের অনুরোধ',body:'সকল সদস্যকে জানুয়ারি মাসের চাঁদা পরিশোধ করার অনুরোধ করা হচ্ছে।',date:'২০২৫-০১-০৫'},
+    {id:23,title:'নতুন সদস্য আবেদন',body:'সংগঠনে নতুন সদস্য ভর্তি চলছে। আগ্রহীরা সম্পাদকের সাথে যোগাযোগ করুন।',date:'২০২৪-১২-২০'}
+  ],
+  gallery:[
+    {id:31,type:'photo',url:'',caption:'বার্ষিক সভা ২০২৪'},
+    {id:32,type:'photo',url:'',caption:'স্বাস্থ্য শিবির'},
+    {id:33,type:'photo',url:'',caption:'খাদ্য বিতরণ'},
+    {id:34,type:'photo',url:'',caption:'বৃক্ষরোপণ'},
+    {id:35,type:'video',url:'',caption:'শিক্ষা কার্যক্রম — ভিডিও প্রতিবেদন'},
+    {id:36,type:'video',url:'',caption:'সামাজিক অনুষ্ঠান — ভিডিও প্রতিবেদন'}
+  ],
+  slides:[
+    {id:41,imageUrl:'',caption:'আমাদের কার্যক্রমের মুহূর্ত'},
+    {id:42,imageUrl:'',caption:'সমাজসেবামূলক কর্মকাণ্ড'},
+    {id:43,imageUrl:'',caption:'সহায়তা বিতরণ কার্যক্রম'}
+  ],
+  courses:[
+    {id:51,title:'বেসিক কম্পিউটার অ্যাপ্লিকেশন কোর্স',date:'২০২৫-০১-১০',desc:'মাইক্রোসফট অফিস, ইন্টারনেট ব্রাউজিং ও বেসিক টাইপিং প্রশিক্ষণ',status:'done'},
+    {id:52,title:'গ্রাফিক্স ডিজাইন কর্মশালা',date:'২০২৫-০৬-০১',desc:'ফটোশপ ও ক্যানভা ব্যবহার করে বেসিক গ্রাফিক্স ডিজাইন শেখানো হচ্ছে',status:'ongoing'}
+  ],
+  corners:[
+    {id:61,title:'সদস্য কর্ণার',icon:'👨‍👩‍👧',color:'maroon',links:'সদস্য ফরম | https://forms.google.com/\nসদস্য তালিকা | https://example.com/members'},
+    {id:62,title:'অনুদান কর্ণার',icon:'🤝',color:'green',links:'অনুদান ফরম | https://forms.google.com/\nবার্ষিক প্রতিবেদন | https://example.com/report'}
+  ],
+  settings:{name:'আল-নূর সমাজকল্যাণ সংগঠন',address:'৫, কামাল আতাতুর্ক এভিনিউ, বনানী, ঢাকা-১২১৩',phone:'০১৭১১-১২৩৪৫৬',email:'info@alnoor-somaj.org',password:'1234',logoUrl:'',headerImageUrl:'',heroVideoUrl:'',web3formsKey:'',heroTitle:'সমাজের পরিবর্তনে\nআমাদের একসাথে পথচলা',heroLead:'আল-নূর সমাজকল্যাণ সংগঠন গত ১৪ বছর ধরে শিক্ষা, স্বাস্থ্য, খাদ্য সহায়তা ও পরিবেশ রক্ষায় কাজ করে যাচ্ছে — সততা, স্বচ্ছতা এবং মানবতার প্রতি অবিচল শ্রদ্ধা নিয়ে।',statN1:'৮০০+',statL1:'সহায়তাপ্রাপ্ত পরিবার',statN2:'৫০+',statL2:'সম্পন্ন প্রকল্প',statN3:'১৪',statL3:'বছরের পথচলা',statN4:'১২০+',statL4:'সক্রিয় সদস্য',committeeSession:'২০২৪-২০২৬'}
+};
+const ABOUT_CARDS=[
+  {i:'🎯',t:'আমাদের লক্ষ্য',b:'সমাজের প্রতিটি স্তরে মানুষের জীবনমান উন্নয়নে কাজ করা এবং সুবিধাবঞ্চিতদের পাশে দাঁড়ানো।'},
+  {i:'🌟',t:'আমাদের উদ্দেশ্য',b:'শিক্ষা, স্বাস্থ্য, কর্মসংস্থান ও সামাজিক সচেতনতা বৃদ্ধির মাধ্যমে সুন্দর সমাজ গড়া।'},
+  {i:'📜',t:'প্রতিষ্ঠার ইতিহাস',b:'২০১০ সালে কয়েকজন সমাজসেবী ব্যক্তির উদ্যোগে সংগঠনটি প্রতিষ্ঠিত হয়।'},
+  {i:'🤝',t:'আমাদের মূল্যবোধ',b:'সততা, স্বচ্ছতা, একতা ও মানবতার প্রতি অবিচল শ্রদ্ধাই আমাদের ভিত্তি।'},
+  {i:'🏆',t:'আমাদের অর্জন',b:'গত ১৪ বছরে ৮০০-এরও বেশি পরিবারকে সহায়তা ও ৫০+ প্রকল্প সম্পন্ন করা।'},
+  {i:'🌿',t:'ভবিষ্যৎ পরিকল্পনা',b:'আধুনিক প্রযুক্তি ও তরুণ প্রজন্মের অংশগ্রহণে সমাজসেবার নতুন দিগন্ত।'}
+];
+const MONTHS=['জানু','ফেব্রু','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগ','সেপ্টে','অক্টো','নভে','ডিসে'];
+
+/* ========= FIREBASE ========= */
+const firebaseConfig = {
+  apiKey: "AIzaSyDOYLpQjawz8Hnf63dUdMDlCZuA68mc3nk",
+  authDomain: "scka-b1856.firebaseapp.com",
+  databaseURL: "https://scka-b1856-default-rtdb.firebaseio.com",
+  projectId: "scka-b1856",
+  storageBucket: "scka-b1856.firebasestorage.app",
+  messagingSenderId: "797285434546",
+  appId: "1:797285434546:web:906b46dcffa8fee0a0b5ab"
+};
+firebase.initializeApp(firebaseConfig);
+const fsDb = firebase.firestore();
+const siteDocRef = fsDb.collection('site').doc('alnoor');
+
+let db = structuredClone(DEFAULT);
+let firestoreReady = false;
+function save(){
+  renderAll(); // optimistic local update so admin sees the change instantly
+  siteDocRef.set(db).catch(err=>{
+    console.error('Firestore save failed:', err);
+    toast('⚠️ সেভ ব্যর্থ হয়েছে — ইন্টারনেট সংযোগ চেক করুন');
+  });
+}
+siteDocRef.onSnapshot(snap=>{
+  if(snap.exists){
+    db = {...structuredClone(DEFAULT), ...snap.data()};
+  } else {
+    // first run on a fresh Firestore project — seed it with the defaults
+    siteDocRef.set(db);
+  }
+  firestoreReady = true;
+  renderAll();
+}, err=>{
+  console.error('Firestore connection error:', err);
+  toast('⚠️ ডাটাবেসের সাথে সংযোগ করা যায়নি');
+});
+function nextId(){return Math.max(0,...[...db.committee,...db.generalMembers,...db.activities,...db.notices,...db.gallery,...db.slides,...db.courses,...db.corners].map(x=>x.id))+1}
+
+/* ========= TOAST ========= */
+const toastEl=document.getElementById('toast');
+function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toastEl.classList.remove('show'),2400)}
+
+/* ========= RENDER PUBLIC ========= */
+function renderAbout(){
+  document.getElementById('about-cards').innerHTML = ABOUT_CARDS.map(c=>`
+    <div class="card"><div class="icon-box">${c.i}</div><h3>${c.t}</h3><p>${c.b}</p></div>
+  `).join('');
+}
+function memberCardHtml(m,serial,showRole){
+  const img=driveImageUrl(m.imageUrl,'w400');
+  const avatarInner = img
+    ? `<img src="${img}" alt="${m.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.remove();this.parentElement.textContent='${m.avatar||m.name.charAt(0)}'" />`
+    : (m.avatar||m.name.charAt(0));
+  return `<div class="member" style="position:relative">
+    <span style="position:absolute;top:.7rem;left:.7rem;width:26px;height:26px;border-radius:50%;background:var(--grad-gold);color:var(--primary-dark);font-size:.75rem;font-weight:800;display:grid;place-items:center">${toBnNum(serial)}</span>
+    <div class="avatar">${avatarInner}</div>
+    <h3 style="margin-top:.8rem;color:var(--primary-dark)">${m.name}</h3>
+    ${showRole ? `<span class="badge">${m.role}</span>` : ''}
+    <p style="color:var(--muted);margin-top:.6rem;font-size:.9rem">📞 ${m.phone}</p>
+  </div>`;
+}
+function renderCommittee(){
+  document.getElementById('committee-session').textContent = 'সেশন: '+(db.settings.committeeSession||'');
+  document.getElementById('committee-list').innerHTML = db.committee.map((m,i)=>memberCardHtml(m,i+1,true)).join('')
+    || '<p style="color:var(--muted);text-align:center;grid-column:1/-1">কোনো সদস্য নেই</p>';
+}
+function renderGeneralMembers(){
+  document.getElementById('general-members-list').innerHTML = db.generalMembers.map((m,i)=>{
+    const img=driveImageUrl(m.imageUrl);
+    const avatarInner = img
+      ? `<img src="${img}" alt="${m.name}" onerror="this.remove();this.parentElement.textContent='${m.avatar||m.name.charAt(0)}'" />`
+      : (m.avatar||m.name.charAt(0));
+    return `<tr>
+      <td>${toBnNum(i+1)}</td>
+      <td><div class="m-avatar">${avatarInner}</div></td>
+      <td><b>${m.name}</b></td>
+      <td>${m.bloodGroup ? `<span class="blood-badge">🩸 ${m.bloodGroup}</span>` : '—'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--muted)">কোনো সদস্য নেই</td></tr>';
+}
+const CORNER_COLORS={maroon:'#9f1239',green:'#15803d',blue:'#1d4ed8',gold:'#b45309'};
+function parseCornerLinks(str){
+  return (str||'').split('\n').map(line=>{
+    const [label,url] = line.split('|').map(s=>s?s.trim():'');
+    return (label && url) ? {label,url} : null;
+  }).filter(Boolean);
+}
+function renderCorners(){
+  const el=document.getElementById('home-corners-list');
+  if(!el) return;
+  el.innerHTML = db.corners.map(c=>{
+    const links=parseCornerLinks(c.links);
+    const bg=CORNER_COLORS[c.color]||CORNER_COLORS.green;
+    return `<div class="corner-card">
+      <div class="corner-header" style="background:${bg}">
+        <span class="corner-icon">${c.icon||'📁'}</span>
+        <h3>${c.title}</h3>
+      </div>
+      <div class="corner-body">
+        ${links.length ? links.map(l=>`<button class="corner-link" onclick="openCornerLink('${l.url.replace(/'/g,"\\'")}','${l.label.replace(/'/g,"\\'")}')"><span class="tick">✓</span> ${l.label}</button>`).join('') : '<div class="corner-empty">কোনো লিংক যোগ করা হয়নি</div>'}
+      </div>
+    </div>`;
+  }).join('') || '';
+}
+function openCornerLink(url,label){
+  document.getElementById('embed-title').textContent=label;
+  document.getElementById('embed-frame').src=url;
+  document.getElementById('embed-fallback-link').href=url;
+  location.hash='embed-view';
+  showView('embed-view');
+}
+let activitiesPage=1;
+let activitiesFilter='all';
+const ACT_PAGE_SIZE=10;
+const ACT_FILTERS=[['all','সব'],['ongoing','চলমান'],['upcoming','আসন্ন'],['done','সম্পন্ন']];
+function toBnNum(n){ return String(n).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]); }
+const STATUS_ORDER={ongoing:0,upcoming:1,done:2};
+function statusLabel(status){ return status==='ongoing'?'চলমান':status==='upcoming'?'আসন্ন':'সম্পন্ন'; }
+function statusClass(status){ return status==='ongoing'?'badge-soft-blue':status==='upcoming'?'badge-soft-gold':'badge-soft-green'; }
+function activityCardHtml(a){
+  const img=driveImageUrl(a.imageUrl,'w800');
+  const media = img
+    ? `<img class="activity-thumb" src="${img}" alt="${a.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="activity-thumb-fallback" style="display:none">📅</div>`
+    : `<div class="activity-thumb-fallback">📅</div>`;
+  const statusBadge = `<span class="badge ${statusClass(a.status)}" style="position:absolute;top:.6rem;left:.6rem;margin:0;box-shadow:0 2px 8px rgba(0,0,0,.15)">${statusLabel(a.status)}</span>`;
+  return `<div class="activity-card">
+    <div style="position:relative">${media}${statusBadge}</div>
+    <div class="activity-body">
+      <h3>${a.title}</h3>
+      <button class="btn btn-ghost" onclick="openActivity(${a.id})">বিস্তারিত</button>
+    </div>
+  </div>`;
+}
+function setActivitiesFilter(status){
+  activitiesFilter=status;
+  activitiesPage=1;
+  renderActivities();
+}
+function renderActivitiesFilter(){
+  const el=document.getElementById('activities-filter');
+  if(!el) return;
+  el.innerHTML = ACT_FILTERS.map(([key,label])=>
+    `<button class="btn ${activitiesFilter===key?'btn-primary':'btn-ghost'}" onclick="setActivitiesFilter('${key}')">${label}</button>`
+  ).join('');
+}
+let homeActSliderIdx=0, homeActSliderTimer=null, homeActSliderItems=[];
+function renderHomeActivitiesSlider(items){
+  homeActSliderItems=items;
+  homeActSliderIdx=0;
+  clearInterval(homeActSliderTimer);
+  const el=document.getElementById('home-activities-list');
+  const dotsEl=document.getElementById('home-activities-dots');
+  if(items.length===0){
+    el.innerHTML='<p style="color:var(--muted);text-align:center">কোনো কার্যক্রম নেই</p>';
+    dotsEl.innerHTML='';
+    return;
+  }
+  el.innerHTML = items.map((a,i)=>`<div class="act-slide ${i===0?'active':''}" data-i="${i}">${activityCardHtml(a)}</div>`).join('')
+    + (items.length>1 ? `<button class="act-arrow act-prev" onclick="homeActSliderGo(homeActSliderIdx-1)" aria-label="আগেরটা">‹</button><button class="act-arrow act-next" onclick="homeActSliderGo(homeActSliderIdx+1)" aria-label="পরেরটা">›</button>` : '');
+  dotsEl.innerHTML = items.length>1
+    ? items.map((_,i)=>`<button class="hs-dot ${i===0?'active':''}" onclick="homeActSliderGo(${i})" aria-label="কার্যক্রম ${i+1}"></button>`).join('')
+    : '';
+  if(items.length>1){
+    homeActSliderTimer=setInterval(()=>homeActSliderGo(homeActSliderIdx+1),4500);
+  }
+}
+function homeActSliderGo(i){
+  if(homeActSliderItems.length===0) return;
+  homeActSliderIdx=(i+homeActSliderItems.length)%homeActSliderItems.length;
+  document.querySelectorAll('#home-activities-list .act-slide').forEach(n=>n.classList.toggle('active', +n.dataset.i===homeActSliderIdx));
+  document.querySelectorAll('#home-activities-dots .hs-dot').forEach((n,idx)=>n.classList.toggle('active', idx===homeActSliderIdx));
+  clearInterval(homeActSliderTimer);
+  if(homeActSliderItems.length>1) homeActSliderTimer=setInterval(()=>homeActSliderGo(homeActSliderIdx+1),4500);
+}
+function renderActivities(){
+  const byStatus=(list)=>[...list].sort((a,b)=>{
+    const sp = (STATUS_ORDER[a.status]??1) - (STATUS_ORDER[b.status]??1);
+    if(sp!==0) return sp;
+    return parseNoticeDate(b.date)-parseNoticeDate(a.date);
+  });
+  const allSorted = byStatus(db.activities);
+
+  // home page preview — latest 5, unfiltered, shown as a sliding carousel
+  renderHomeActivitiesSlider(allSorted.slice(0,5));
+
+  // full activities page — filterable + paginated, 10 per page
+  renderActivitiesFilter();
+  const filtered = activitiesFilter==='all' ? allSorted : allSorted.filter(a=>a.status===activitiesFilter);
+  const totalPages=Math.max(1,Math.ceil(filtered.length/ACT_PAGE_SIZE));
+  if(activitiesPage>totalPages) activitiesPage=totalPages;
+  const start=(activitiesPage-1)*ACT_PAGE_SIZE;
+  document.getElementById('activities-list').innerHTML = filtered.slice(start,start+ACT_PAGE_SIZE).map(activityCardHtml).join('')
+    || '<p style="color:var(--muted);text-align:center;grid-column:1/-1">কোনো কার্যক্রম নেই</p>';
+  renderActivitiesPagination(totalPages);
+}
+function renderActivitiesPagination(totalPages){
+  const el=document.getElementById('activities-pagination');
+  if(totalPages<=1){ el.innerHTML=''; return; }
+  let html=`<button class="btn btn-ghost act-page-btn" ${activitiesPage===1?'disabled':''} onclick="gotoActivitiesPage(${activitiesPage-1})">‹</button>`;
+  for(let i=1;i<=totalPages;i++){
+    html+=`<button class="btn act-page-btn ${i===activitiesPage?'btn-primary':'btn-ghost'}" onclick="gotoActivitiesPage(${i})">${toBnNum(i)}</button>`;
+  }
+  html+=`<button class="btn btn-ghost act-page-btn" ${activitiesPage===totalPages?'disabled':''} onclick="gotoActivitiesPage(${activitiesPage+1})">›</button>`;
+  el.innerHTML=html;
+}
+function gotoActivitiesPage(p){
+  activitiesPage=p;
+  renderActivities();
+  document.getElementById('activities').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function openActivity(id){
+  const a=db.activities.find(x=>x.id===id);
+  if(!a) return;
+  document.getElementById('ad-title').textContent=a.title;
+  const st=document.getElementById('ad-status');
+  st.textContent = statusLabel(a.status);
+  st.className = 'badge '+statusClass(a.status);
+  document.getElementById('ad-date').textContent='📅 '+a.date;
+  const img=driveImageUrl(a.imageUrl,'w1200');
+  const imgEl=document.getElementById('ad-img');
+  if(img){ imgEl.src=img; imgEl.style.display='block'; } else { imgEl.removeAttribute('src'); imgEl.style.display='none'; }
+  document.getElementById('ad-desc').textContent=a.desc;
+  location.hash='activity-detail';
+  showView('activity-detail');
+}
+const COURSE_STATUS_ORDER={ongoing:0,done:1};
+function courseStatusLabel(status){ return status==='ongoing'?'চলমান':'সম্পন্ন'; }
+function courseStatusClass(status){ return status==='ongoing'?'badge-soft-blue':'badge-soft-green'; }
+function renderCourses(){
+  const sorted=[...db.courses].sort((a,b)=>{
+    const sp=(COURSE_STATUS_ORDER[a.status]??0)-(COURSE_STATUS_ORDER[b.status]??0);
+    if(sp!==0) return sp;
+    return parseNoticeDate(b.date)-parseNoticeDate(a.date);
+  });
+  document.getElementById('courses-list').innerHTML = sorted.map(c=>`
+    <div class="row" style="align-items:flex-start;border-left:4px solid var(--primary)">
+      <div class="icon-box" style="flex-shrink:0">🎓</div>
+      <div style="flex:1;min-width:0">
+        <h3 style="color:var(--primary-dark);font-size:.92rem;font-weight:700;line-height:1.4;margin:0;white-space:normal">${c.title}</h3>
+        <div style="display:flex;align-items:center;gap:.7rem;margin-top:.5rem;flex-wrap:wrap">
+          <span class="badge ${courseStatusClass(c.status)}" style="margin:0">${courseStatusLabel(c.status)}</span>
+          <a href="javascript:void(0)" onclick="openCourse(${c.id})" style="color:var(--primary);font-weight:600;font-size:.85rem;text-decoration:underline">বিস্তারিত পড়ুন →</a>
+        </div>
+      </div>
+    </div>
+  `).join('') || '<p style="color:var(--muted);text-align:center">কোনো কোর্স নেই</p>';
+}
+function openCourse(id){
+  const c=db.courses.find(x=>x.id===id);
+  if(!c) return;
+  document.getElementById('cd-title').textContent=c.title;
+  const st=document.getElementById('cd-status');
+  st.textContent=courseStatusLabel(c.status);
+  st.className='badge '+courseStatusClass(c.status);
+  document.getElementById('cd-date').textContent = c.date ? '📅 '+c.date : '';
+  document.getElementById('cd-desc').textContent=c.desc;
+  const images=(c.images||'').split('\n').map(s=>s.trim()).filter(Boolean);
+  const gal=document.getElementById('cd-gallery');
+  gal.innerHTML = images.map(url=>{
+    const img=driveImageUrl(url,'w1200');
+    return img ? `<img src="${img}" alt="${c.title}" onerror="this.remove()" />` : '';
+  }).join('');
+  gal.style.display = images.length ? 'grid' : 'none';
+  location.hash='course-detail';
+  showView('course-detail');
+}
+async function sendContactMessage(e){
+  e.preventDefault();
+  const name=document.getElementById('cf-name').value.trim();
+  const contact=document.getElementById('cf-contact').value.trim();
+  const msg=document.getElementById('cf-msg').value.trim();
+  const key=(db.settings.web3formsKey||'').trim();
+  const form=e.target;
+  const btn=form.querySelector('button');
+
+  if(!key){
+    const to=(db.settings.email||'').trim();
+    if(!to){ toast('⚠️ এডমিন ইমেইল সেট করা নেই'); return; }
+    const subject=encodeURIComponent('ওয়েবসাইট থেকে বার্তা — '+name);
+    const body=encodeURIComponent(`নাম: ${name}\nযোগাযোগ: ${contact}\n\nবার্তা:\n${msg}`);
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    toast('⚠️ স্বয়ংক্রিয় ইমেইল সেটআপ করা নেই — ইমেইল অ্যাপ খোলা হচ্ছে');
+    form.reset();
+    return;
+  }
+
+  const original=btn.textContent;
+  btn.disabled=true; btn.textContent='পাঠানো হচ্ছে...';
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({
+        access_key:key,
+        subject:`নতুন বার্তা — ${db.settings.name} (${name})`,
+        from_name:db.settings.name,
+        name,
+        email:contact,
+        message:msg
+      })
+    });
+    const data=await res.json();
+    if(data.success){
+      toast('✅ বার্তা সফলভাবে পাঠানো হয়েছে!');
+      form.reset();
+    } else {
+      console.error('Web3Forms error:', data);
+      toast('⚠️ বার্তা পাঠানো যায়নি, আবার চেষ্টা করুন');
+    }
+  } catch(err){
+    console.error('Contact send failed:', err);
+    toast('⚠️ ইন্টারনেট সংযোগ সমস্যা — আবার চেষ্টা করুন');
+  } finally {
+    btn.disabled=false; btn.textContent=original;
+  }
+}
+function parseNoticeDate(str){
+  if(!str) return 0;
+  const bn='০১২৩৪৫৬৭৮৯', en='0123456789';
+  const s = String(str).replace(/[০-৯]/g, d => en[bn.indexOf(d)]);
+  let m;
+  if((m = s.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/))) return new Date(+m[1], +m[2]-1, +m[3]).getTime();
+  if((m = s.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{4})/))) return new Date(+m[3], +m[2]-1, +m[1]).getTime();
+  const t = Date.parse(s);
+  return isNaN(t) ? 0 : t;
+}
+let noticesPage=1;
+const NOTICE_PAGE_SIZE=10;
+function noticeRowHtml(n,latestTime){
+  const isNew = latestTime>0 && parseNoticeDate(n.date)===latestTime;
+  return `<button class="notice-row" onclick="openNotice(${n.id})">
+      <div class="notice-date-box">${n.date}</div>
+      <div class="notice-row-title">
+        ${n.title}
+        ${isNew ? '<span class="badge-new">New</span>' : ''}
+      </div>
+      <span class="notice-chevron">›</span>
+    </button>`;
+}
+function renderNotices(){
+  const sorted = [...db.notices].sort((a,b)=>parseNoticeDate(b.date)-parseNoticeDate(a.date));
+  const latestTime = sorted.length ? parseNoticeDate(sorted[0].date) : 0;
+
+  // home page preview — latest 5
+  document.getElementById('home-notices-list').innerHTML = sorted.slice(0,5).map(n=>noticeRowHtml(n,latestTime)).join('')
+    || '<p style="color:var(--muted);text-align:center">কোনো নোটিশ নেই</p>';
+
+  // full notices page — paginated, 10 per page
+  const totalPages=Math.max(1,Math.ceil(sorted.length/NOTICE_PAGE_SIZE));
+  if(noticesPage>totalPages) noticesPage=totalPages;
+  const start=(noticesPage-1)*NOTICE_PAGE_SIZE;
+  document.getElementById('notices-list').innerHTML = sorted.slice(start,start+NOTICE_PAGE_SIZE).map(n=>noticeRowHtml(n,latestTime)).join('')
+    || '<p style="color:var(--muted);text-align:center">কোনো নোটিশ নেই</p>';
+  renderNoticesPagination(totalPages);
+}
+function renderNoticesPagination(totalPages){
+  const el=document.getElementById('notices-pagination');
+  if(totalPages<=1){ el.innerHTML=''; return; }
+  let html=`<button class="btn btn-ghost act-page-btn" ${noticesPage===1?'disabled':''} onclick="gotoNoticesPage(${noticesPage-1})">‹</button>`;
+  for(let i=1;i<=totalPages;i++){
+    html+=`<button class="btn act-page-btn ${i===noticesPage?'btn-primary':'btn-ghost'}" onclick="gotoNoticesPage(${i})">${toBnNum(i)}</button>`;
+  }
+  html+=`<button class="btn btn-ghost act-page-btn" ${noticesPage===totalPages?'disabled':''} onclick="gotoNoticesPage(${noticesPage+1})">›</button>`;
+  el.innerHTML=html;
+}
+function gotoNoticesPage(p){
+  noticesPage=p;
+  renderNotices();
+  document.getElementById('notices').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function openNotice(id){
+  const n = db.notices.find(x=>x.id===id);
+  if(!n) return;
+  document.getElementById('notice-modal-title').textContent = n.title;
+  document.getElementById('notice-modal-date').textContent = '📅 '+n.date;
+  document.getElementById('notice-modal-body').textContent = n.body;
+  document.getElementById('notice-modal').classList.add('open');
+}
+function closeNotice(){
+  document.getElementById('notice-modal').classList.remove('open');
+}
+let galleryFilter='all';
+const GAL_FILTERS=[['all','সব'],['photo','ছবি'],['video','ভিডিও']];
+function setGalleryFilter(type){
+  galleryFilter=type;
+  renderGallery();
+}
+function galleryTileHtml(g){
+  if(g.type==='video'){
+    const ytId=g.url?extractYouTubeId(g.url):null;
+    const thumbUrl = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : driveImageUrl(g.url,'w800');
+    const media = thumbUrl
+      ? `<img src="${thumbUrl}" alt="${g.caption}" onerror="this.remove()" />`
+      : '';
+    return `<div class="tile" onclick="openGalleryItem(${g.id})">
+      ${media}
+      <span class="play-badge">▶️</span>
+      <div class="cap">${g.caption}</div>
+    </div>`;
+  }
+  const img=driveImageUrl(g.url,'w1200');
+  const media = img
+    ? `<img src="${img}" alt="${g.caption}" onerror="this.remove();this.parentElement.textContent='📷'" />`
+    : '📷';
+  return `<div class="tile" onclick="openGalleryItem(${g.id})">
+    ${media}
+    <div class="cap">${g.caption}</div>
+  </div>`;
+}
+function renderGallery(){
+  const filterEl=document.getElementById('gallery-filter');
+  if(filterEl){
+    filterEl.innerHTML = GAL_FILTERS.map(([key,label])=>
+      `<button class="btn ${galleryFilter===key?'btn-primary':'btn-ghost'}" onclick="setGalleryFilter('${key}')">${label}</button>`
+    ).join('');
+  }
+  const items = galleryFilter==='all' ? db.gallery : db.gallery.filter(g=>g.type===galleryFilter);
+  document.getElementById('gallery-list').innerHTML = items.map(galleryTileHtml).join('')
+    || '<p style="color:var(--muted);text-align:center;grid-column:1/-1">কোনো ছবি/ভিডিও নেই</p>';
+
+  // home page preview — latest 5 photos
+  const latestPhotos=[...db.gallery].filter(g=>g.type==='photo').sort((a,b)=>b.id-a.id).slice(0,5);
+  document.getElementById('home-gallery-list').innerHTML = latestPhotos.map(galleryTileHtml).join('')
+    || '<p style="color:var(--muted);text-align:center;grid-column:1/-1">কোনো ছবি নেই</p>';
+}
+function openGalleryItem(id){
+  const g=db.gallery.find(x=>x.id===id);
+  if(!g) return;
+  const mediaEl=document.getElementById('gallery-modal-media');
+  if(g.type==='video'){
+    const ytId=g.url?extractYouTubeId(g.url):null;
+    if(ytId){
+      mediaEl.innerHTML = `<iframe src="${ytEmbedUrl(ytId)}" style="width:100%;aspect-ratio:16/9;border:0;display:block" allow="autoplay;encrypted-media" allowfullscreen></iframe>`;
+    } else if(g.url){
+      mediaEl.innerHTML = `<video src="${g.url}" controls autoplay style="width:100%;max-height:70vh;display:block"></video>`;
+    } else {
+      mediaEl.innerHTML = `<div style="aspect-ratio:16/9;display:grid;place-items:center;color:#fff;font-size:2.5rem">🎬</div>`;
+    }
+  } else {
+    const img=driveImageUrl(g.url,'w1600');
+    mediaEl.innerHTML = img
+      ? `<img src="${img}" alt="${g.caption}" style="width:100%;display:block;max-height:70vh;object-fit:contain" />`
+      : `<div style="aspect-ratio:4/3;display:grid;place-items:center;color:#fff;font-size:2.5rem">📷</div>`;
+  }
+  document.getElementById('gallery-modal-caption').textContent=g.caption;
+  document.getElementById('gallery-modal').classList.add('open');
+}
+function closeGalleryItem(){
+  document.getElementById('gallery-modal').classList.remove('open');
+  document.getElementById('gallery-modal-media').innerHTML='';
+}
+let sliderTimer=null, sliderIdx=0;
+function renderSlider(){
+  const el=document.getElementById('home-slider');
+  if(!el) return;
+  clearInterval(sliderTimer);
+  const slides=db.slides||[];
+  if(slides.length===0){ el.style.display='none'; el.innerHTML=''; return; }
+  el.style.display='';
+  sliderIdx=0;
+  el.innerHTML = slides.map((s,i)=>{
+    const img=driveImageUrl(s.imageUrl,'w1920');
+    const media = img
+      ? `<img src="${img}" alt="${s.caption||'স্লাইড'}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="hs-fallback" style="display:none">🖼️</div>`
+      : `<div class="hs-fallback">🖼️</div>`;
+    return `<div class="hs-slide ${i===0?'active':''}" data-i="${i}">
+      ${media}
+      <div class="hs-cap">${s.caption||''}</div>
+    </div>`;
+  }).join('') + (slides.length>1 ? `
+    <button class="hs-arrow hs-prev" onclick="sliderGo(sliderIdx-1)" aria-label="আগের ছবি">‹</button>
+    <button class="hs-arrow hs-next" onclick="sliderGo(sliderIdx+1)" aria-label="পরের ছবি">›</button>
+    <div class="hs-dots">${slides.map((_,i)=>`<button class="hs-dot ${i===0?'active':''}" onclick="sliderGo(${i})" aria-label="স্লাইড ${i+1}"></button>`).join('')}</div>
+  ` : '');
+  if(slides.length>1){
+    sliderTimer = setInterval(()=>sliderGo(sliderIdx+1),5000);
+  }
+}
+function sliderGo(i){
+  const el=document.getElementById('home-slider');
+  const slides=db.slides||[];
+  if(!el||slides.length===0) return;
+  sliderIdx = (i+slides.length)%slides.length;
+  el.querySelectorAll('.hs-slide').forEach(n=>n.classList.toggle('active', +n.dataset.i===sliderIdx));
+  el.querySelectorAll('.hs-dot').forEach((n,idx)=>n.classList.toggle('active', idx===sliderIdx));
+  clearInterval(sliderTimer);
+  if(slides.length>1) sliderTimer = setInterval(()=>sliderGo(sliderIdx+1),5000);
+}
+function driveImageUrl(url,size){
+  if(!url) return '';
+  url=url.trim();
+  const m = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  const id = m ? m[1] : null;
+  if(id) return `https://drive.google.com/thumbnail?id=${id}&sz=${size||'w400'}`;
+  return url; // not a recognizable Drive link — use as-is (e.g. direct image URL)
+}
+function applyLogo(url){
+  const direct = driveImageUrl(url);
+  document.querySelectorAll('.logo-mark').forEach(el=>{
+    if(direct){
+      el.innerHTML = `<img src="${direct}" alt="লোগো" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" onerror="this.parentElement.innerHTML='আ'" />`;
+    } else {
+      el.textContent = 'আ';
+    }
+  });
+}
+function extractYouTubeId(url){
+  const patterns=[
+    /youtu\.be\/([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/live\/([a-zA-Z0-9_-]{6,})/
+  ];
+  for(const p of patterns){ const m=url.match(p); if(m) return m[1]; }
+  return null;
+}
+function ytEmbedUrl(id){
+  return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&rel=0&playsinline=1&disablekb=1`;
+}
+function applyHeroVideo(url){
+  const v=document.getElementById('hero-video');
+  const ytWrap=document.getElementById('hero-yt-wrap');
+  const yt=document.getElementById('hero-yt');
+  const overlay=document.getElementById('hero-overlay');
+  url=(url||'').trim();
+  const ytId = url ? extractYouTubeId(url) : null;
+  if(ytId){
+    v.pause(); v.removeAttribute('src'); v.dataset.src=''; v.classList.remove('active');
+    yt.src = ytEmbedUrl(ytId);
+    ytWrap.classList.add('active');
+    overlay.classList.add('active');
+  } else if(url){
+    ytWrap.classList.remove('active'); yt.src='';
+    if(v.dataset.src!==url){ v.src=url; v.dataset.src=url; }
+    v.classList.add('active');
+    overlay.classList.add('active');
+    v.load();
+    const p=v.play();
+    if(p&&p.catch) p.catch(()=>{});
+    v.onerror=()=>{ v.classList.remove('active'); overlay.classList.remove('active'); };
+  } else {
+    v.removeAttribute('src'); v.dataset.src=''; v.classList.remove('active');
+    ytWrap.classList.remove('active'); yt.src='';
+    overlay.classList.remove('active');
+  }
+}
+function previewHeroVideo(){
+  const url=document.getElementById('st-hero-video').value.trim();
+  const pv=document.getElementById('hero-video-preview');
+  const ytId = url ? extractYouTubeId(url) : null;
+  if(ytId){
+    pv.style.display='block';
+    pv.innerHTML = `<iframe src="${ytEmbedUrl(ytId)}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="autoplay"></iframe>`;
+  } else if(url){
+    pv.style.display='block';
+    pv.innerHTML = `<video src="${url}" muted loop autoplay playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" onerror="this.parentElement.style.display='none'"></video>`;
+  } else {
+    pv.innerHTML=''; pv.style.display='none';
+  }
+}
+function nl2br(s){
+  const esc=(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return esc.replace(/\n/g,'<br/>');
+}
+function previewLogo(){
+  const url=document.getElementById('st-logo').value;
+  const direct=driveImageUrl(url);
+  const pv=document.getElementById('logo-preview');
+  if(direct){
+    pv.innerHTML = `<img src="${direct}" alt="লোগো প্রিভিউ" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" onerror="this.parentElement.textContent='⚠️ লিংক সঠিক নয়'" />`;
+  } else {
+    pv.textContent = 'আ';
+  }
+}
+function applyHeaderImage(url){
+  const direct = driveImageUrl(url,'w1920');
+  document.querySelector('header.site').style.setProperty('--header-img', direct ? `url("${direct}")` : 'none');
+}
+function previewHeaderImage(){
+  const url=document.getElementById('st-header').value;
+  const direct=driveImageUrl(url,'w1920');
+  const pv=document.getElementById('header-preview');
+  if(direct){
+    pv.style.backgroundImage = `url("${direct}")`;
+    pv.textContent='';
+  } else {
+    pv.style.backgroundImage='none';
+    pv.textContent='কোনো ছবি সেট করা নেই';
+  }
+}
+function renderSettings(){
+  const s=db.settings;
+  document.getElementById('brand-name').textContent=s.name;
+  document.getElementById('sb-name').textContent=s.name;
+  document.getElementById('ct-addr').textContent=s.address;
+  document.getElementById('ct-phone').textContent=s.phone;
+  document.getElementById('ct-email').textContent=s.email;
+  document.getElementById('ft-name').textContent=s.name;
+  document.getElementById('ft-name2').textContent=s.name;
+  document.getElementById('ft-addr').textContent='📍 '+s.address;
+  document.getElementById('ft-phone').textContent='📱 '+s.phone;
+  document.getElementById('ft-email').textContent='✉️ '+s.email;
+  document.getElementById('yr').textContent='২০২৬';
+  document.title=s.name;
+  applyLogo(s.logoUrl);
+  applyHeaderImage(s.headerImageUrl);
+  applyHeroVideo(s.heroVideoUrl);
+  document.getElementById('hero-title').innerHTML = nl2br(s.heroTitle);
+  document.getElementById('hero-lead').textContent = s.heroLead;
+  for(let i=1;i<=4;i++){
+    document.getElementById('stat-n-'+i).textContent = s['statN'+i]||'';
+    document.getElementById('stat-l-'+i).textContent = s['statL'+i]||'';
+    document.getElementById('st-stat-n-'+i).value = s['statN'+i]||'';
+    document.getElementById('st-stat-l-'+i).value = s['statL'+i]||'';
+  }
+  // fill settings form
+  ['name','addr','phone','email','pass','logo','header'].forEach((k,i)=>{
+    const el=document.getElementById('st-'+k);
+    if(el) el.value = [s.name,s.address,s.phone,s.email,s.password,s.logoUrl,s.headerImageUrl][i];
+  });
+  document.getElementById('st-w3f').value = s.web3formsKey||'';
+  document.getElementById('st-committee-session').value = s.committeeSession||'';
+  document.getElementById('st-hero-title').value = s.heroTitle;
+  document.getElementById('st-hero-lead').value = s.heroLead;
+  document.getElementById('st-hero-video').value = s.heroVideoUrl;
+  previewHeroVideo();
+  previewLogo();
+  previewHeaderImage();
+}
+
+/* ========= ADMIN TABLES ========= */
+function rowBtns(type,id){return `<div class="row-actions">
+  <button class="btn btn-ghost btn-sm" onclick="openForm('${type}',${id})">✏️ এডিট</button>
+  <button class="btn btn-danger btn-sm" onclick="del('${type}',${id})">🗑️</button>
+</div>`}
+function renderAdminTables(){
+  document.getElementById('s-com').textContent=db.committee.length;
+  document.getElementById('s-gm').textContent=db.generalMembers.length;
+  document.getElementById('s-act').textContent=db.activities.length;
+  document.getElementById('s-not').textContent=db.notices.length;
+  document.getElementById('s-gal').textContent=db.gallery.length;
+  document.getElementById('s-slide').textContent=db.slides.length;
+  document.getElementById('s-course').textContent=db.courses.length;
+
+  document.getElementById('tbl-committee').innerHTML = db.committee.map(m=>{
+    const img=driveImageUrl(m.imageUrl);
+    const avatarInner = img
+      ? `<img src="${img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.remove();this.parentElement.textContent='${m.avatar||m.name.charAt(0)}'" />`
+      : (m.avatar||m.name.charAt(0));
+    return `<tr><td><div class="avatar" style="width:36px;height:36px;font-size:1rem">${avatarInner}</div></td>
+    <td><b>${m.name}</b></td><td>${m.role}</td><td>${m.phone}</td><td>${rowBtns('committee',m.id)}</td></tr>`;
+  }).join('') || emptyRow(5);
+
+  document.getElementById('tbl-generalMembers').innerHTML = db.generalMembers.map(m=>{
+    const img=driveImageUrl(m.imageUrl);
+    const avatarInner = img
+      ? `<img src="${img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.remove();this.parentElement.textContent='${m.avatar||m.name.charAt(0)}'" />`
+      : (m.avatar||m.name.charAt(0));
+    return `<tr><td><div class="avatar" style="width:36px;height:36px;font-size:1rem">${avatarInner}</div></td>
+    <td><b>${m.name}</b></td><td>${m.phone}</td><td>${m.bloodGroup?`<span class="blood-badge">${m.bloodGroup}</span>`:'—'}</td><td>${rowBtns('generalMembers',m.id)}</td></tr>`;
+  }).join('') || emptyRow(5);
+
+  document.getElementById('tbl-activities').innerHTML = [...db.activities].sort((a,b)=>{
+    const sp = (STATUS_ORDER[a.status]??1) - (STATUS_ORDER[b.status]??1);
+    if(sp!==0) return sp;
+    return parseNoticeDate(b.date)-parseNoticeDate(a.date);
+  }).map(a=>{
+    const img=driveImageUrl(a.imageUrl);
+    const thumb = img
+      ? `<img src="${img}" alt="" style="width:56px;height:40px;object-fit:cover;border-radius:.4rem" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📅',style:'font-size:1.6rem'}))" />`
+      : `<span style="font-size:1.6rem">📅</span>`;
+    return `<tr><td>${thumb}</td><td><b>${a.title}</b><br/><small style="color:var(--muted)">${a.desc}</small></td>
+    <td>${a.date}</td>
+    <td><span class="badge ${statusClass(a.status)}">${statusLabel(a.status)}</span></td>
+    <td>${rowBtns('activities',a.id)}</td></tr>`;
+  }).join('') || emptyRow(5);
+
+  document.getElementById('tbl-notices').innerHTML = [...db.notices].sort((a,b)=>parseNoticeDate(b.date)-parseNoticeDate(a.date)).map(n=>`
+    <tr><td><b>${n.title}</b></td><td>${rowBtns('notices',n.id)}</td></tr>`).join('') || emptyRow(2);
+
+  document.getElementById('tbl-gallery').innerHTML = db.gallery.map(g=>{
+    let thumb;
+    if(g.type==='video'){
+      const ytId=g.url?extractYouTubeId(g.url):null;
+      const t = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : driveImageUrl(g.url,'w400');
+      thumb = t ? `<img src="${t}" alt="" style="width:56px;height:40px;object-fit:cover;border-radius:.4rem" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🎬',style:'font-size:1.6rem'}))" />` : `<span style="font-size:1.6rem">🎬</span>`;
+    } else {
+      const img=driveImageUrl(g.url);
+      thumb = img ? `<img src="${img}" alt="" style="width:56px;height:40px;object-fit:cover;border-radius:.4rem" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📷',style:'font-size:1.6rem'}))" />` : `<span style="font-size:1.6rem">📷</span>`;
+    }
+    return `<tr><td>${thumb}</td><td><span class="badge ${g.type==='video'?'badge-soft-blue':'badge-soft-gold'}">${g.type==='video'?'ভিডিও':'ছবি'}</span></td><td>${g.caption}</td><td>${rowBtns('gallery',g.id)}</td></tr>`;
+  }).join('') || emptyRow(4);
+
+  document.getElementById('tbl-slides').innerHTML = db.slides.map(s=>{
+    const img=driveImageUrl(s.imageUrl);
+    const thumb = img
+      ? `<img src="${img}" alt="" style="width:56px;height:38px;object-fit:cover;border-radius:.4rem" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'🖼️',style:'font-size:1.6rem'}))" />`
+      : `<span style="font-size:1.6rem">🖼️</span>`;
+    return `<tr><td>${thumb}</td><td>${s.caption||'—'}</td><td>${rowBtns('slides',s.id)}</td></tr>`;
+  }).join('') || emptyRow(3);
+
+  document.getElementById('tbl-courses').innerHTML = [...db.courses].sort((a,b)=>{
+    const sp=(COURSE_STATUS_ORDER[a.status]??0)-(COURSE_STATUS_ORDER[b.status]??0);
+    if(sp!==0) return sp;
+    return parseNoticeDate(b.date)-parseNoticeDate(a.date);
+  }).map(c=>`
+    <tr><td><b>${c.title}</b></td><td><span class="badge ${courseStatusClass(c.status)}">${courseStatusLabel(c.status)}</span></td><td>${rowBtns('courses',c.id)}</td></tr>`).join('') || emptyRow(3);
+
+  document.getElementById('tbl-corners').innerHTML = db.corners.map(c=>{
+    const linkCount = parseCornerLinks(c.links).length;
+    return `<tr><td style="font-size:1.4rem">${c.icon||'📁'}</td><td><b>${c.title}</b></td><td><span style="display:inline-block;width:16px;height:16px;border-radius:50%;background:${CORNER_COLORS[c.color]||CORNER_COLORS.green};vertical-align:middle"></span></td><td>${toBnNum(linkCount)}</td><td>${rowBtns('corners',c.id)}</td></tr>`;
+  }).join('') || emptyRow(5);
+}
+function emptyRow(n){return `<tr><td colspan="${n}" style="text-align:center;padding:2rem;color:var(--muted)">কোনো এন্ট্রি নেই</td></tr>`}
+
+function renderAll(){renderAbout();renderCommittee();renderGeneralMembers();renderCorners();renderActivities();renderNotices();renderGallery();renderSlider();renderCourses();renderSettings();renderAdminTables()}
+
+/* ========= MODAL FORMS ========= */
+const FIELDS={
+  committee:[['name','নাম','input'],['role','পদ','input'],['phone','ফোন','input'],['imageUrl','ছবির লিংক (ঐচ্ছিক, না দিলে অক্ষর দেখাবে)','input'],['avatar','আভাটার অক্ষর (ছবি না থাকলে দেখাবে)','input']],
+  generalMembers:[['name','নাম','input'],['phone','ফোন','input'],['bloodGroup','রক্তের গ্রুপ (ঐচ্ছিক)','select:A+=A+,A-=A-,B+=B+,B-=B-,AB+=AB+,AB-=AB-,O+=O+,O-=O-'],['imageUrl','ছবির লিংক (ঐচ্ছিক, না দিলে অক্ষর দেখাবে)','input'],['avatar','আভাটার অক্ষর (ছবি না থাকলে দেখাবে)','input']],
+  activities:[['title','শিরোনাম','input'],['date','তারিখ (YYYY-MM-DD)','input'],['imageUrl','ছবির লিংক (গুগল ড্রাইভ/URL, ঐচ্ছিক)','input'],['desc','বিবরণ','textarea'],['status','অবস্থা','select:ongoing=চলমান,upcoming=আসন্ন,done=সম্পন্ন']],
+  notices:[['title','শিরোনাম','input'],['body','বিষয়বস্তু','textarea'],['date','তারিখ (YYYY-MM-DD)','input']],
+  gallery:[['type','ধরন','select:photo=ছবি,video=ভিডিও'],['url','লিংক (ছবির জন্য গুগল ড্রাইভ/URL, ভিডিওর জন্য YouTube/mp4)','input'],['caption','ক্যাপশন','input']],
+  slides:[['imageUrl','ছবির লিংক (গুগল ড্রাইভ/URL)','input'],['caption','ক্যাপশন (ঐচ্ছিক)','input']],
+  courses:[['title','শিরোনাম','input'],['date','তারিখ (YYYY-MM-DD, ঐচ্ছিক)','input'],['images','ছবির লিংকসমূহ (ঐচ্ছিক, একটি লাইনে একটি লিংক)','textarea'],['desc','বিস্তারিত','textarea'],['status','অবস্থা','select:ongoing=চলমান,done=সম্পন্ন']],
+  corners:[['title','কর্ণারের শিরোনাম','input'],['icon','ইমোজি আইকন (ঐচ্ছিক)','input'],['color','হেডার কালার','select:maroon=মেরুন (লাল),green=সবুজ,blue=নীল,gold=সোনালি'],['links','বাটন লিংকসমূহ, ঐচ্ছিক ("লেবেল | লিংক" ফরম্যাটে, প্রতি লাইনে একটি)','textarea']]
+};
+let editing={type:null,id:null};
+function openForm(type,id){
+  editing={type,id:id||null};
+  const item = id ? db[type].find(x=>x.id===id) : {};
+  document.getElementById('md-title').textContent = (id?'এডিট করুন':'নতুন যোগ করুন')+' — '+({committee:'কার্যনির্বাহী পর্ষদ সদস্য',generalMembers:'সাধারণ সদস্য',activities:'কার্যক্রম',notices:'নোটিশ',gallery:'গ্যালারি',slides:'স্লাইড',courses:'কোর্স',corners:'কর্ণার'}[type]);
+  const form = document.getElementById('md-form');
+  form.innerHTML = FIELDS[type].map(([k,l,t])=>{
+    const v = item[k]||'';
+    const req = l.includes('ঐচ্ছিক') ? '' : 'required';
+    if(t==='textarea') return `<div class="field"><label>${l}</label><textarea name="${k}" rows="3" ${req}>${v}</textarea></div>`;
+    if(t.startsWith('select:')){
+      const opts = t.slice(7).split(',').map(o=>{const[ov,ol]=o.split('=');return `<option value="${ov}" ${v===ov?'selected':''}>${ol}</option>`}).join('');
+      return `<div class="field"><label>${l}</label><select name="${k}">${opts}</select></div>`;
+    }
+    return `<div class="field"><label>${l}</label><input name="${k}" value="${v}" ${req} /></div>`;
+  }).join('') + `<div class="modal-actions">
+    <button type="button" class="btn btn-ghost" onclick="closeForm()">বাতিল</button>
+    <button type="submit" class="btn btn-primary">সেভ করুন</button>
+  </div>`;
+  document.getElementById('modal').classList.add('open');
+}
+function closeForm(){document.getElementById('modal').classList.remove('open')}
+function saveForm(e){
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const obj = Object.fromEntries(fd);
+  if(editing.id){
+    db[editing.type] = db[editing.type].map(x => x.id===editing.id ? {...x,...obj}:x);
+    toast('আপডেট হয়েছে');
+  } else {
+    db[editing.type].push({id:nextId(),...obj});
+    toast('নতুন এন্ট্রি যোগ হয়েছে');
+  }
+  save();closeForm();
+}
+let pendingDelete=null;
+function del(type,id){
+  pendingDelete={type,id};
+  document.getElementById('confirm-modal').classList.add('open');
+}
+function closeConfirmModal(){
+  pendingDelete=null;
+  document.getElementById('confirm-modal').classList.remove('open');
+}
+function confirmDelete(){
+  if(!pendingDelete) return;
+  const {type,id}=pendingDelete;
+  db[type]=db[type].filter(x=>x.id!==id);
+  save();
+  toast('মুছে ফেলা হয়েছে');
+  closeConfirmModal();
+}
+function saveSettings(e){
+  e.preventDefault();
+  db.settings={
+    name:document.getElementById('st-name').value,
+    address:document.getElementById('st-addr').value,
+    phone:document.getElementById('st-phone').value,
+    email:document.getElementById('st-email').value,
+    password:document.getElementById('st-pass').value,
+    logoUrl:document.getElementById('st-logo').value.trim(),
+    headerImageUrl:document.getElementById('st-header').value.trim(),
+    heroVideoUrl:document.getElementById('st-hero-video').value.trim(),
+    web3formsKey:document.getElementById('st-w3f').value.trim(),
+    heroTitle:document.getElementById('st-hero-title').value,
+    heroLead:document.getElementById('st-hero-lead').value,
+    statN1:document.getElementById('st-stat-n-1').value,
+    statL1:document.getElementById('st-stat-l-1').value,
+    statN2:document.getElementById('st-stat-n-2').value,
+    statL2:document.getElementById('st-stat-l-2').value,
+    statN3:document.getElementById('st-stat-n-3').value,
+    statL3:document.getElementById('st-stat-l-3').value,
+    statN4:document.getElementById('st-stat-n-4').value,
+    statL4:document.getElementById('st-stat-l-4').value,
+    committeeSession:document.getElementById('st-committee-session').value
+  };save();toast('সেটিংস সেভ হয়েছে');
+}
+
+/* ========= NAVIGATION ========= */
+function showView(name){
+  const isAdmin = name==='admin';
+  const loggedIn = sessionStorage.getItem('alnoor-auth')==='1';
+  document.getElementById('public').classList.toggle('hide', isAdmin);
+  document.getElementById('login').classList.toggle('hide', !(isAdmin && !loggedIn));
+  const ad=document.getElementById('admin');
+  ad.classList.toggle('active', isAdmin && loggedIn);
+  if(!isAdmin){
+    const standalonePages=['about','committee','general-members','activities','contact','courses','course-detail','activity-detail','gallery','notices','embed-view'];
+    const isStandalone = standalonePages.includes(name);
+    const pub=document.getElementById('public');
+    pub.classList.toggle('show-standalone', isStandalone);
+    document.querySelectorAll('.page-section.standalone').forEach(s=>s.classList.toggle('active', s.id===name));
+    if(isStandalone){
+      window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      const el=document.getElementById(name);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    document.querySelectorAll('nav.links a').forEach(a=>a.classList.toggle('active',a.dataset.nav===name));
+    setMenu(false);
+  }
+}
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-nav]');
+  if(a){e.preventDefault();const n=a.dataset.nav;location.hash=n;showView(n);document.getElementById('adminNavDropdown').classList.remove('open');}
+});
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1)||'home';showView(h)});
+function toggleNavDropdown(e){
+  e.stopPropagation();
+  document.getElementById('adminNavDropdown').classList.toggle('open');
+}
+document.addEventListener('click',e=>{
+  const dd=document.getElementById('adminNavDropdown');
+  if(dd && !dd.contains(e.target)) dd.classList.remove('open');
+});
+
+function setMenu(open){
+  document.getElementById('mainNav').classList.toggle('open',open);
+  document.getElementById('menuBackdrop').classList.toggle('open',open);
+}
+document.getElementById('menuBtn').onclick=()=>setMenu(!document.getElementById('mainNav').classList.contains('open'));
+document.getElementById('menuBackdrop').onclick=()=>setMenu(false);
+
+/* sidebar three-bar toggle */
+const ad=document.getElementById('admin');
+const sbOverlay=document.getElementById('sbOverlay');
+function isMobile(){return window.innerWidth<=760}
+function openSidebar(){ if(isMobile()) ad.classList.add('sb-open'); else ad.classList.remove('collapsed'); }
+function closeSidebar(){ if(isMobile()) ad.classList.remove('sb-open'); else ad.classList.add('collapsed'); }
+function toggleSidebar(){
+  if(isMobile()) ad.classList.toggle('sb-open');
+  else ad.classList.toggle('collapsed');
+}
+document.getElementById('hamBtn').onclick=toggleSidebar;
+sbOverlay.addEventListener('click',closeSidebar);
+document.getElementById('sideNav').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-tab]');if(!b)return;
+  const tab=b.dataset.tab;
+  document.querySelectorAll('#sideNav button').forEach(x=>x.classList.toggle('active',x===b));
+  document.querySelectorAll('[data-pane]').forEach(p=>p.classList.toggle('active',p.dataset.pane===tab));
+  document.getElementById('admin-title').textContent={dashboard:'ড্যাশবোর্ড',committee:'কার্যনির্বাহী পর্ষদ ম্যানেজমেন্ট',generalMembers:'সাধারণ সদস্য ম্যানেজমেন্ট',activities:'কার্যক্রম ম্যানেজমেন্ট',notices:'নোটিশ ম্যানেজমেন্ট',gallery:'গ্যালারি ম্যানেজমেন্ট',slides:'হোম স্লাইড ম্যানেজমেন্ট',courses:'স্কিল ডেভলপমেন্ট ম্যানেজমেন্ট',corners:'কর্ণার ম্যানেজমেন্ট',settings:'সাইট সেটিংস'}[tab];
+  closeSidebar();
+});
+window.addEventListener('resize',()=>{
+  // keep state sane when crossing the mobile/desktop breakpoint
+  if(isMobile()){ ad.classList.remove('collapsed'); }
+  else { ad.classList.remove('sb-open'); }
+});
+
+/* ========= AUTH ========= */
+function doLogin(e){
+  e.preventDefault();
+  const u=document.getElementById('lg-user').value.trim();
+  const p=document.getElementById('lg-pass').value;
+  if(u==='admin' && p===db.settings.password){
+    sessionStorage.setItem('alnoor-auth','1');
+    toast('স্বাগতম!');
+    location.hash='admin';showView('admin');
+  } else toast('❌ ভুল ইউজারনেম/পাসওয়ার্ড');
+}
+function doLogout(){sessionStorage.removeItem('alnoor-auth');toast('লগআউট হয়েছে');location.hash='home';showView('home')}
+
+/* ========= INIT ========= */
+renderAll();
+const initial=location.hash.slice(1)||'home';
+showView(initial);
+</script>
+</body>
+</html>
