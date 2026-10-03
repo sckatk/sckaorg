@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>আল-নূর সমাজকল্যাণ সংগঠন</title>
-<meta name="description" content="স্বপ্নছায়া ছাত্র কল্যাণ এসোসিয়েশন" />
+<meta name="description" content="মানবতার সেবায় নিবেদিত একটি আধুনিক সমাজকল্যাণ সংগঠন।" />
 <link rel="stylesheet" href="https://fonts.maateen.me/solaiman-lipi/font.css" />
 <style>
   :root{
@@ -340,6 +340,8 @@
   </div>
 </header>
 
+<div id="fs-banner" style="display:none;position:sticky;top:0;z-index:999;background:#dc2626;color:#fff;text-align:center;font-size:.85rem;font-weight:600;padding:.6rem 1rem;line-height:1.5"></div>
+
 <!-- HOME -->
 <section id="home" class="hero page-section">
   <video class="hero-video" id="hero-video" autoplay muted loop playsinline></video>
@@ -399,7 +401,7 @@
 <!-- GENERAL MEMBERS -->
 <section id="general-members" class="page page-section standalone" style="background:#fff">
   <div class="container">
-    <div class="page-head"><h2>🧑‍🤝‍🧑 সাধারণ সদস্য</h2><p>সংগঠনের সাধারণ সদস্যবৃন্দ</p><div class="accent"></div></div>
+    <div class="page-head"><h2>🧑🤝🧑 সাধারণ সদস্য</h2><p>সংগঠনের সাধারণ সদস্যবৃন্দ</p><div class="accent"></div></div>
     <div style="overflow-x:auto">
       <table class="member-tbl">
         <thead><tr><th style="width:60px">ক্রমিক</th><th style="width:70px">ছবি</th><th>নাম</th><th>রক্তের গ্রুপ</th></tr></thead>
@@ -591,7 +593,7 @@
     <div class="side-nav" id="sideNav">
       <button data-tab="dashboard" class="active">📊 ড্যাশবোর্ড</button>
       <button data-tab="committee">👥 কার্যনির্বাহী পর্ষদ</button>
-      <button data-tab="generalMembers">🧑‍🤝‍🧑 সাধারণ সদস্য</button>
+      <button data-tab="generalMembers">🧑🤝🧑 সাধারণ সদস্য</button>
       <button data-tab="activities">📅 কার্যক্রম</button>
       <button data-tab="notices">📢 নোটিশ</button>
       <button data-tab="gallery">🖼️ গ্যালারি</button>
@@ -617,7 +619,7 @@
       <div class="admin-section active" data-pane="dashboard">
         <div class="stat-row">
           <div class="stat-card"><span class="i">👥</span><div class="l">কার্যনির্বাহী পর্ষদ</div><div class="n" id="s-com">0</div></div>
-          <div class="stat-card"><span class="i">🧑‍🤝‍🧑</span><div class="l">সাধারণ সদস্য</div><div class="n" id="s-gm">0</div></div>
+          <div class="stat-card"><span class="i">🧑🤝🧑</span><div class="l">সাধারণ সদস্য</div><div class="n" id="s-gm">0</div></div>
           <div class="stat-card"><span class="i">📅</span><div class="l">কার্যক্রম</div><div class="n" id="s-act">0</div></div>
           <div class="stat-card"><span class="i">📢</span><div class="l">নোটিশ</div><div class="n" id="s-not">0</div></div>
           <div class="stat-card"><span class="i">🖼️</span><div class="l">গ্যালারি</div><div class="n" id="s-gal">0</div></div>
@@ -638,7 +640,7 @@
 
       <!-- GENERAL MEMBERS -->
       <div class="admin-section" data-pane="generalMembers">
-        <div class="section-head"><h2>🧑‍🤝‍🧑 সাধারণ সদস্য ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('generalMembers')">+ নতুন সদস্য</button></div>
+        <div class="section-head"><h2>🧑🤝🧑 সাধারণ সদস্য ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('generalMembers')">+ নতুন সদস্য</button></div>
         <table class="admin-tbl"><thead><tr><th>ছবি</th><th>নাম</th><th>ফোন</th><th>রক্তের গ্রুপ</th><th></th></tr></thead><tbody id="tbl-generalMembers"></tbody></table>
       </div>
 
@@ -783,52 +785,15 @@
 <script>
 /* ========= STATE ========= */
 const DEFAULT={
-  committee:[
-    {id:1,name:'মোঃ আব্দুর রহমান',role:'সভাপতি',phone:'০১৭১১-১১১১১১',avatar:'আ',imageUrl:''},
-    {id:2,name:'মোঃ ইব্রাহীম খলিল',role:'সাধারণ সম্পাদক',phone:'০১৮২২-২২২২২২',avatar:'ই',imageUrl:''},
-    {id:3,name:'মোসাম্মৎ রহিমা বেগম',role:'কোষাধ্যক্ষ',phone:'০১৯৩৩-৩৩৩৩৩৩',avatar:'র',imageUrl:''},
-    {id:4,name:'মোঃ সালাউদ্দিন',role:'সাংগঠনিক সম্পাদক',phone:'০১৬৪৪-৪৪৪৪৪৪',avatar:'স',imageUrl:''},
-    {id:5,name:'নুরুন্নাহার আক্তার',role:'সমাজকল্যাণ সম্পাদক',phone:'০১৫৫৫-৫৫৫৫৫৫',avatar:'ন',imageUrl:''},
-    {id:6,name:'মোঃ কামরুজ্জামান',role:'প্রচার সম্পাদক',phone:'০১৭৬৬-৬৬৬৬৬৬',avatar:'ক',imageUrl:''}
-  ],
-  generalMembers:[
-    {id:101,name:'মোঃ রফিকুল ইসলাম',phone:'০১৭০০-০০০০০১',avatar:'র',imageUrl:'',bloodGroup:'B+'},
-    {id:102,name:'ফাতেমা খাতুন',phone:'০১৭০০-০০০০০২',avatar:'ফ',imageUrl:'',bloodGroup:'A+'},
-    {id:103,name:'মোঃ আনিসুর রহমান',phone:'০১৭০০-০০০০০৩',avatar:'আ',imageUrl:'',bloodGroup:'O+'}
-  ],
-  activities:[
-    {id:11,title:'বার্ষিক সাধারণ সভা ২০২৫',date:'২০২৫-০১-১৫',desc:'বার্ষিক পরিকল্পনা ও হিসাব পর্যালোচনা',status:'done',imageUrl:''},
-    {id:12,title:'বিনামূল্যে স্বাস্থ্য শিবির',date:'২০২৫-০২-১০',desc:'স্থানীয় বাসিন্দাদের জন্য বিনামূল্যে চিকিৎসা সেবা',status:'done',imageUrl:''},
-    {id:13,title:'রমজান খাদ্য সহায়তা',date:'২০২৫-০৩-০১',desc:'অসহায় পরিবারগুলোতে খাদ্য সামগ্রী বিতরণ',status:'upcoming',imageUrl:''},
-    {id:14,title:'বৃক্ষরোপণ অভিযান',date:'২০২৫-০৪-০৫',desc:'পরিবেশ রক্ষায় এলাকায় গাছ লাগানো',status:'upcoming',imageUrl:''}
-  ],
-  notices:[
-    {id:21,title:'মাসিক সভার নোটিশ',body:'আগামী ১৫ তারিখ সন্ধ্যা ৬টায় মাসিক সভা অনুষ্ঠিত হবে।',date:'২০২৫-০১-১০'},
-    {id:22,title:'চাঁদা পরিশোধের অনুরোধ',body:'সকল সদস্যকে জানুয়ারি মাসের চাঁদা পরিশোধ করার অনুরোধ করা হচ্ছে।',date:'২০২৫-০১-০৫'},
-    {id:23,title:'নতুন সদস্য আবেদন',body:'সংগঠনে নতুন সদস্য ভর্তি চলছে। আগ্রহীরা সম্পাদকের সাথে যোগাযোগ করুন।',date:'২০২৪-১২-২০'}
-  ],
-  gallery:[
-    {id:31,type:'photo',url:'',caption:'বার্ষিক সভা ২০২৪'},
-    {id:32,type:'photo',url:'',caption:'স্বাস্থ্য শিবির'},
-    {id:33,type:'photo',url:'',caption:'খাদ্য বিতরণ'},
-    {id:34,type:'photo',url:'',caption:'বৃক্ষরোপণ'},
-    {id:35,type:'video',url:'',caption:'শিক্ষা কার্যক্রম — ভিডিও প্রতিবেদন'},
-    {id:36,type:'video',url:'',caption:'সামাজিক অনুষ্ঠান — ভিডিও প্রতিবেদন'}
-  ],
-  slides:[
-    {id:41,imageUrl:'',caption:'আমাদের কার্যক্রমের মুহূর্ত'},
-    {id:42,imageUrl:'',caption:'সমাজসেবামূলক কর্মকাণ্ড'},
-    {id:43,imageUrl:'',caption:'সহায়তা বিতরণ কার্যক্রম'}
-  ],
-  courses:[
-    {id:51,title:'বেসিক কম্পিউটার অ্যাপ্লিকেশন কোর্স',date:'২০২৫-০১-১০',desc:'মাইক্রোসফট অফিস, ইন্টারনেট ব্রাউজিং ও বেসিক টাইপিং প্রশিক্ষণ',status:'done'},
-    {id:52,title:'গ্রাফিক্স ডিজাইন কর্মশালা',date:'২০২৫-০৬-০১',desc:'ফটোশপ ও ক্যানভা ব্যবহার করে বেসিক গ্রাফিক্স ডিজাইন শেখানো হচ্ছে',status:'ongoing'}
-  ],
-  corners:[
-    {id:61,title:'সদস্য কর্ণার',icon:'👨‍👩‍👧',color:'maroon',links:'সদস্য ফরম | https://forms.google.com/\nসদস্য তালিকা | https://example.com/members'},
-    {id:62,title:'অনুদান কর্ণার',icon:'🤝',color:'green',links:'অনুদান ফরম | https://forms.google.com/\nবার্ষিক প্রতিবেদন | https://example.com/report'}
-  ],
-  settings:{name:'আল-নূর সমাজকল্যাণ সংগঠন',address:'৫, কামাল আতাতুর্ক এভিনিউ, বনানী, ঢাকা-১২১৩',phone:'০১৭১১-১২৩৪৫৬',email:'info@alnoor-somaj.org',password:'1234',logoUrl:'',headerImageUrl:'',heroVideoUrl:'',web3formsKey:'',heroTitle:'সমাজের পরিবর্তনে\nআমাদের একসাথে পথচলা',heroLead:'আল-নূর সমাজকল্যাণ সংগঠন গত ১৪ বছর ধরে শিক্ষা, স্বাস্থ্য, খাদ্য সহায়তা ও পরিবেশ রক্ষায় কাজ করে যাচ্ছে — সততা, স্বচ্ছতা এবং মানবতার প্রতি অবিচল শ্রদ্ধা নিয়ে।',statN1:'৮০০+',statL1:'সহায়তাপ্রাপ্ত পরিবার',statN2:'৫০+',statL2:'সম্পন্ন প্রকল্প',statN3:'১৪',statL3:'বছরের পথচলা',statN4:'১২০+',statL4:'সক্রিয় সদস্য',committeeSession:'২০২৪-২০২৬'}
+  committee:[],
+  generalMembers:[],
+  activities:[],
+  notices:[],
+  gallery:[],
+  slides:[],
+  courses:[],
+  corners:[],
+  settings:{name:'আল-নূর সমাজকল্যাণ সংগঠন',address:'',phone:'',email:'',password:'1234',logoUrl:'',headerImageUrl:'',heroVideoUrl:'',web3formsKey:'',heroTitle:'সমাজের পরিবর্তনে\nআমাদের একসাথে পথচলা',heroLead:'',statN1:'',statL1:'',statN2:'',statL2:'',statN3:'',statL3:'',statN4:'',statL4:'',committeeSession:''}
 };
 const ABOUT_CARDS=[
   {i:'🎯',t:'আমাদের লক্ষ্য',b:'সমাজের প্রতিটি স্তরে মানুষের জীবনমান উন্নয়নে কাজ করা এবং সুবিধাবঞ্চিতদের পাশে দাঁড়ানো।'},
@@ -855,27 +820,62 @@ const fsDb = firebase.firestore();
 const siteDocRef = fsDb.collection('site').doc('alnoor');
 
 let db = structuredClone(DEFAULT);
-let firestoreReady = false;
+let firestoreReady = false;   // becomes true only after a real read from Firestore succeeds
+let hasSeededOnce = false;    // guards against seeding more than once per page load
+function showFsBanner(msg){
+  const el=document.getElementById('fs-banner');
+  if(!el) return;
+  el.textContent = msg;
+  el.style.display='block';
+}
+function hideFsBanner(){
+  const el=document.getElementById('fs-banner');
+  if(el) el.style.display='none';
+}
 function save(){
+  if(!firestoreReady){
+    // Firestore hasn't confirmed a successful connection yet — refuse to write,
+    // so a local/offline session can never silently overwrite real saved data.
+    toast('⚠️ ডাটাবেসের সাথে সংযোগ নিশ্চিত হয়নি, তাই সেভ করা হয়নি — একটু পর আবার চেষ্টা করুন');
+    showFsBanner('⚠️ ডাটাবেসের সাথে সংযোগ নিশ্চিত না হওয়া পর্যন্ত কোনো পরিবর্তন সেভ করা হবে না। ইন্টারনেট সংযোগ চেক করুন।');
+    renderAll();
+    return;
+  }
   renderAll(); // optimistic local update so admin sees the change instantly
-  siteDocRef.set(db).catch(err=>{
+  siteDocRef.set(db).then(()=>{
+    hideFsBanner();
+  }).catch(err=>{
     console.error('Firestore save failed:', err);
     toast('⚠️ সেভ ব্যর্থ হয়েছে — ইন্টারনেট সংযোগ চেক করুন');
+    showFsBanner('⚠️ সর্বশেষ পরিবর্তনটি ডাটাবেসে সেভ করা যায়নি (এরর: '+(err.code||err.message||'unknown')+')। ইন্টারনেট সংযোগ চেক করে আবার চেষ্টা করুন — পুনরায় লোড করবেন না, তাহলে এই পরিবর্তনটি হারিয়ে যেতে পারে।');
   });
 }
 siteDocRef.onSnapshot(snap=>{
   if(snap.exists){
+    // real data exists in Firestore — this is always the source of truth
     db = {...structuredClone(DEFAULT), ...snap.data()};
-  } else {
-    // first run on a fresh Firestore project — seed it with the defaults
+    hideFsBanner();
+  } else if(!hasSeededOnce){
+    // Firestore document genuinely doesn't exist yet (brand-new project, first run ever).
+    // Only ever do this once per page load, and only write the empty DEFAULT shape —
+    // never fabricated sample content — so a later rules/connection fix can't overwrite
+    // real admin data with demo data again.
+    hasSeededOnce = true;
     siteDocRef.set(db);
   }
   firestoreReady = true;
   renderAll();
 }, err=>{
   console.error('Firestore connection error:', err);
+  firestoreReady = false;
   toast('⚠️ ডাটাবেসের সাথে সংযোগ করা যায়নি');
+  showFsBanner('⚠️ ডাটাবেসের সাথে সংযোগ করা যাচ্ছে না — এরর কোড: '+(err.code||err.message||'unknown')+'। এই অবস্থায় কোনো পরিবর্তন সেভ হবে না এবং এডমিন প্যানেলে কোনো বাটন কাজ করলেও তা ডাটাবেসে জমা হবে না। Firebase Console → Firestore → Rules চেক করুন।');
 });
+setTimeout(()=>{
+  if(!firestoreReady){
+    showFsBanner('⚠️ ডাটাবেসের সাথে সংযোগ করতে দেরি হচ্ছে — ইন্টারনেট সংযোগ চেক করুন। সংযোগ না হওয়া পর্যন্ত কোনো তথ্য সেভ করা যাবে না।');
+  }
+},6000);
 function nextId(){return Math.max(0,...[...db.committee,...db.generalMembers,...db.activities,...db.notices,...db.gallery,...db.slides,...db.courses,...db.corners].map(x=>x.id))+1}
 
 /* ========= TOAST ========= */
