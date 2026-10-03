@@ -219,6 +219,15 @@
   .modal{position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:1rem;z-index:90}
   .modal.open{display:flex}
   .modal-box{background:#fff;border-radius:1rem;padding:1.5rem;max-width:520px;width:100%;box-shadow:var(--shadow-elegant);max-height:90vh;overflow-y:auto}
+  .push-notif-overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:1.2rem;z-index:1000}
+  .push-notif-overlay.show{display:flex}
+  .push-notif-card{position:relative;background:#fff;border-radius:1.4rem;padding:2.3rem 1.8rem 1.8rem;max-width:380px;width:100%;text-align:center;box-shadow:0 25px 60px -15px rgba(0,0,0,.4);border:1px solid rgba(212,160,23,.25);overflow:hidden;animation:pnPop .4s cubic-bezier(.34,1.56,.64,1)}
+  .push-notif-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:var(--grad-gold)}
+  .push-notif-icon{width:66px;height:66px;border-radius:50%;background:var(--grad-gold);display:grid;place-items:center;font-size:1.9rem;margin:0 auto 1.1rem;box-shadow:0 10px 25px -8px rgba(212,160,23,.6)}
+  .push-notif-text{color:var(--text);font-size:1.02rem;line-height:1.75;white-space:pre-line;margin:0}
+  .push-notif-close{position:absolute;top:.9rem;right:.9rem;background:rgba(15,23,42,.06);border:0;color:var(--muted);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:1rem;line-height:1;transition:.2s}
+  .push-notif-close:hover{background:rgba(15,23,42,.12)}
+  @keyframes pnPop{from{opacity:0;transform:scale(.85) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
   .modal-box h3{color:var(--primary-dark);margin-bottom:1rem}
   .modal-actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:1rem}
 
@@ -341,6 +350,14 @@
 </header>
 
 <div id="fs-banner" style="display:none;position:sticky;top:0;z-index:999;background:#dc2626;color:#fff;text-align:center;font-size:.85rem;font-weight:600;padding:.6rem 1rem;line-height:1.5"></div>
+
+<div id="push-notif" class="push-notif-overlay" onclick="if(event.target===this) hidePushNotif()">
+  <div class="push-notif-card">
+    <button type="button" class="push-notif-close" onclick="hidePushNotif()" aria-label="বন্ধ করুন">✕</button>
+    <div class="push-notif-icon">🔔</div>
+    <p id="push-notif-text" class="push-notif-text"></p>
+  </div>
+</div>
 
 <!-- HOME -->
 <section id="home" class="hero page-section">
@@ -592,6 +609,7 @@
     <div class="sub" id="sb-name">আল-নূর সমাজকল্যাণ</div>
     <div class="side-nav" id="sideNav">
       <button data-tab="dashboard" class="active">📊 ড্যাশবোর্ড</button>
+      <button data-tab="about">📖 আমাদের সম্পর্কে</button>
       <button data-tab="committee">👥 কার্যনির্বাহী পর্ষদ</button>
       <button data-tab="generalMembers">🧑🤝🧑 সাধারণ সদস্য</button>
       <button data-tab="activities">📅 কার্যক্রম</button>
@@ -630,6 +648,13 @@
           <h3 style="color:var(--primary-dark);margin-bottom:.6rem">👋 স্বাগতম!</h3>
           <p style="color:var(--muted)">বাঁদিকের সাইডবার থেকে যেকোনো সেকশন এডিট করুন। সব পরিবর্তন স্বয়ংক্রিয়ভাবে আপনার ব্রাউজারে সেভ হয়।</p>
         </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="admin-section" data-pane="about">
+        <div class="section-head"><h2>📖 আমাদের সম্পর্কে ম্যানেজমেন্ট</h2><button class="btn btn-primary" onclick="openForm('aboutCards')">+ নতুন কার্ড</button></div>
+        <p style="color:var(--muted);margin-bottom:1rem;font-size:.88rem">"পরিচিতি" পেজে যে কার্ডগুলো দেখা যায় (লক্ষ্য, উদ্দেশ্য, ইতিহাস ইত্যাদি) এখান থেকে যুক্ত, এডিট ও ডিলিট করা যাবে।</p>
+        <table class="admin-tbl"><thead><tr><th>আইকন</th><th>শিরোনাম</th><th></th></tr></thead><tbody id="tbl-about"></tbody></table>
       </div>
 
       <!-- COMMITTEE -->
@@ -740,6 +765,19 @@
               <a href="https://web3forms.com" target="_blank" rel="noopener" style="color:var(--primary)">web3forms.com</a> এ গিয়ে উপরের ইমেইল ঠিকানা দিয়ে বিনামূল্যে সাইন আপ করে একটা Access Key নিন — বার্তাগুলো সরাসরি সেই ইমেইলেই পৌঁছে যাবে, কোনো মেইল অ্যাপ খুলবে না। Key খালি রাখলে ভিজিটরের ইমেইল অ্যাপ খুলে যাবে (আগের পদ্ধতি)।
             </small>
           </div>
+          <div class="field">
+            <label>পুশ নোটিফিকেশন</label>
+            <label style="display:flex;align-items:center;gap:.5rem;font-weight:600;cursor:pointer;margin-bottom:.6rem">
+              <input type="checkbox" id="st-push-enabled" style="width:18px;height:18px" /> ON করুন
+            </label>
+            <textarea id="st-push-text" rows="2" placeholder="যেমন: আমাদের নতুন কোর্স শুরু হয়েছে, বিস্তারিত জানতে স্কিল ডেভেলপমেন্ট পেইজ দেখুন।"></textarea>
+            <div style="margin-top:.6rem;display:flex;align-items:center;gap:.6rem">
+              <span style="font-size:.85rem;color:var(--muted)">কতক্ষণ দেখাবে (সেকেন্ড):</span>
+              <input type="number" id="st-push-seconds" min="1" max="120" style="max-width:100px" placeholder="৮" />
+            </div>
+            <button type="button" class="btn btn-ghost" style="margin-top:.6rem" onclick="previewPushNotif()">👁️ প্রিভিউ দেখুন</button>
+            <small style="color:var(--muted);display:block;margin-top:.5rem">সাইটে কেউ প্রবেশ করলে এই লেখাটি পপ-আপ নোটিফিকেশন আকারে কিছুক্ষণের জন্য দেখাবে। ON না করলে বা লেখা ফাঁকা থাকলে কিছু দেখাবে না।</small>
+          </div>
           <div class="field"><label>অ্যাডমিন পাসওয়ার্ড</label><input id="st-pass" /></div>
           <button class="btn btn-primary">সেভ করুন</button>
         </form>
@@ -785,6 +823,7 @@
 <script>
 /* ========= STATE ========= */
 const DEFAULT={
+  aboutCards:[],
   committee:[],
   generalMembers:[],
   activities:[],
@@ -793,16 +832,8 @@ const DEFAULT={
   slides:[],
   courses:[],
   corners:[],
-  settings:{name:'আল-নূর সমাজকল্যাণ সংগঠন',address:'',phone:'',email:'',password:'1234',logoUrl:'',headerImageUrl:'',heroVideoUrl:'',web3formsKey:'',heroTitle:'সমাজের পরিবর্তনে\nআমাদের একসাথে পথচলা',heroLead:'',statN1:'',statL1:'',statN2:'',statL2:'',statN3:'',statL3:'',statN4:'',statL4:'',committeeSession:''}
+  settings:{name:'আল-নূর সমাজকল্যাণ সংগঠন',address:'',phone:'',email:'',password:'1234',logoUrl:'',headerImageUrl:'',heroVideoUrl:'',web3formsKey:'',heroTitle:'সমাজের পরিবর্তনে\nআমাদের একসাথে পথচলা',heroLead:'',statN1:'',statL1:'',statN2:'',statL2:'',statN3:'',statL3:'',statN4:'',statL4:'',committeeSession:'',pushNotifEnabled:false,pushNotifText:'',pushNotifSeconds:8}
 };
-const ABOUT_CARDS=[
-  {i:'🎯',t:'আমাদের লক্ষ্য',b:'সমাজের প্রতিটি স্তরে মানুষের জীবনমান উন্নয়নে কাজ করা এবং সুবিধাবঞ্চিতদের পাশে দাঁড়ানো।'},
-  {i:'🌟',t:'আমাদের উদ্দেশ্য',b:'শিক্ষা, স্বাস্থ্য, কর্মসংস্থান ও সামাজিক সচেতনতা বৃদ্ধির মাধ্যমে সুন্দর সমাজ গড়া।'},
-  {i:'📜',t:'প্রতিষ্ঠার ইতিহাস',b:'২০১০ সালে কয়েকজন সমাজসেবী ব্যক্তির উদ্যোগে সংগঠনটি প্রতিষ্ঠিত হয়।'},
-  {i:'🤝',t:'আমাদের মূল্যবোধ',b:'সততা, স্বচ্ছতা, একতা ও মানবতার প্রতি অবিচল শ্রদ্ধাই আমাদের ভিত্তি।'},
-  {i:'🏆',t:'আমাদের অর্জন',b:'গত ১৪ বছরে ৮০০-এরও বেশি পরিবারকে সহায়তা ও ৫০+ প্রকল্প সম্পন্ন করা।'},
-  {i:'🌿',t:'ভবিষ্যৎ পরিকল্পনা',b:'আধুনিক প্রযুক্তি ও তরুণ প্রজন্মের অংশগ্রহণে সমাজসেবার নতুন দিগন্ত।'}
-];
 const MONTHS=['জানু','ফেব্রু','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগ','সেপ্টে','অক্টো','নভে','ডিসে'];
 
 /* ========= FIREBASE ========= */
@@ -831,6 +862,37 @@ function showFsBanner(msg){
 function hideFsBanner(){
   const el=document.getElementById('fs-banner');
   if(el) el.style.display='none';
+}
+/* ========= PUSH NOTIFICATION (admin-configurable on-site popup) ========= */
+let pushNotifTimer=null;
+function showPushNotifBanner(text,seconds){
+  const el=document.getElementById('push-notif');
+  if(!el) return;
+  document.getElementById('push-notif-text').textContent=text;
+  el.classList.add('show');
+  clearTimeout(pushNotifTimer);
+  const ms=Math.max(1,Number(seconds)||8)*1000;
+  pushNotifTimer=setTimeout(hidePushNotif,ms);
+}
+function hidePushNotif(){
+  clearTimeout(pushNotifTimer);
+  const el=document.getElementById('push-notif');
+  if(el) el.classList.remove('show');
+}
+function previewPushNotif(){
+  const text=document.getElementById('st-push-text').value.trim();
+  const secs=Number(document.getElementById('st-push-seconds').value)||8;
+  if(!text){ toast('প্রথমে নোটিফিকেশনের লেখা লিখুন'); return; }
+  showPushNotifBanner(text,secs);
+}
+let pushNotifShownThisLoad=false;
+function maybeShowPushNotif(){
+  if(pushNotifShownThisLoad) return;
+  const s=db.settings;
+  if(s.pushNotifEnabled && s.pushNotifText && s.pushNotifText.trim() && (location.hash.slice(1)||'home')!=='admin'){
+    pushNotifShownThisLoad=true;
+    showPushNotifBanner(s.pushNotifText.trim(), s.pushNotifSeconds||8);
+  }
 }
 function save(){
   if(!firestoreReady){
@@ -865,6 +927,7 @@ siteDocRef.onSnapshot(snap=>{
   }
   firestoreReady = true;
   renderAll();
+  maybeShowPushNotif();
 }, err=>{
   console.error('Firestore connection error:', err);
   firestoreReady = false;
@@ -876,7 +939,7 @@ setTimeout(()=>{
     showFsBanner('⚠️ ডাটাবেসের সাথে সংযোগ করতে দেরি হচ্ছে — ইন্টারনেট সংযোগ চেক করুন। সংযোগ না হওয়া পর্যন্ত কোনো তথ্য সেভ করা যাবে না।');
   }
 },6000);
-function nextId(){return Math.max(0,...[...db.committee,...db.generalMembers,...db.activities,...db.notices,...db.gallery,...db.slides,...db.courses,...db.corners].map(x=>x.id))+1}
+function nextId(){return Math.max(0,...[...db.aboutCards,...db.committee,...db.generalMembers,...db.activities,...db.notices,...db.gallery,...db.slides,...db.courses,...db.corners].map(x=>x.id))+1}
 
 /* ========= TOAST ========= */
 const toastEl=document.getElementById('toast');
@@ -884,9 +947,9 @@ function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeo
 
 /* ========= RENDER PUBLIC ========= */
 function renderAbout(){
-  document.getElementById('about-cards').innerHTML = ABOUT_CARDS.map(c=>`
-    <div class="card"><div class="icon-box">${c.i}</div><h3>${c.t}</h3><p>${c.b}</p></div>
-  `).join('');
+  document.getElementById('about-cards').innerHTML = db.aboutCards.map(c=>`
+    <div class="card"><div class="icon-box">${c.icon||'📖'}</div><h3>${c.title}</h3><p>${c.body}</p></div>
+  `).join('') || '<p style="color:var(--muted);text-align:center;grid-column:1/-1">এখনো কোনো তথ্য যুক্ত করা হয়নি</p>';
 }
 function memberCardHtml(m,serial,showRole){
   const img=driveImageUrl(m.imageUrl,'w400');
@@ -1463,6 +1526,9 @@ function renderSettings(){
   });
   document.getElementById('st-w3f').value = s.web3formsKey||'';
   document.getElementById('st-committee-session').value = s.committeeSession||'';
+  document.getElementById('st-push-enabled').checked = !!s.pushNotifEnabled;
+  document.getElementById('st-push-text').value = s.pushNotifText||'';
+  document.getElementById('st-push-seconds').value = s.pushNotifSeconds||8;
   document.getElementById('st-hero-title').value = s.heroTitle;
   document.getElementById('st-hero-lead').value = s.heroLead;
   document.getElementById('st-hero-video').value = s.heroVideoUrl;
@@ -1484,6 +1550,9 @@ function renderAdminTables(){
   document.getElementById('s-gal').textContent=db.gallery.length;
   document.getElementById('s-slide').textContent=db.slides.length;
   document.getElementById('s-course').textContent=db.courses.length;
+
+  document.getElementById('tbl-about').innerHTML = db.aboutCards.map(c=>`
+    <tr><td style="font-size:1.4rem">${c.icon||'📖'}</td><td><b>${c.title}</b></td><td>${rowBtns('aboutCards',c.id)}</td></tr>`).join('') || emptyRow(3);
 
   document.getElementById('tbl-committee').innerHTML = db.committee.map(m=>{
     const img=driveImageUrl(m.imageUrl);
@@ -1512,7 +1581,7 @@ function renderAdminTables(){
     const thumb = img
       ? `<img src="${img}" alt="" style="width:56px;height:40px;object-fit:cover;border-radius:.4rem" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'📅',style:'font-size:1.6rem'}))" />`
       : `<span style="font-size:1.6rem">📅</span>`;
-    return `<tr><td>${thumb}</td><td><b>${a.title}</b><br/><small style="color:var(--muted)">${a.desc}</small></td>
+    return `<tr><td>${thumb}</td><td><b>${a.title}</b></td>
     <td>${a.date}</td>
     <td><span class="badge ${statusClass(a.status)}">${statusLabel(a.status)}</span></td>
     <td>${rowBtns('activities',a.id)}</td></tr>`;
@@ -1560,6 +1629,7 @@ function renderAll(){renderAbout();renderCommittee();renderGeneralMembers();rend
 
 /* ========= MODAL FORMS ========= */
 const FIELDS={
+  aboutCards:[['icon','আইকন (ইমোজি, ঐচ্ছিক)','input'],['title','শিরোনাম','input'],['body','বিবরণ','textarea']],
   committee:[['name','নাম','input'],['role','পদ','input'],['phone','ফোন','input'],['imageUrl','ছবির লিংক (ঐচ্ছিক, না দিলে অক্ষর দেখাবে)','input'],['avatar','আভাটার অক্ষর (ছবি না থাকলে দেখাবে)','input']],
   generalMembers:[['name','নাম','input'],['phone','ফোন','input'],['bloodGroup','রক্তের গ্রুপ (ঐচ্ছিক)','select:A+=A+,A-=A-,B+=B+,B-=B-,AB+=AB+,AB-=AB-,O+=O+,O-=O-'],['imageUrl','ছবির লিংক (ঐচ্ছিক, না দিলে অক্ষর দেখাবে)','input'],['avatar','আভাটার অক্ষর (ছবি না থাকলে দেখাবে)','input']],
   activities:[['title','শিরোনাম','input'],['date','তারিখ (YYYY-MM-DD)','input'],['imageUrl','ছবির লিংক (গুগল ড্রাইভ/URL, ঐচ্ছিক)','input'],['desc','বিবরণ','textarea'],['status','অবস্থা','select:ongoing=চলমান,upcoming=আসন্ন,done=সম্পন্ন']],
@@ -1573,7 +1643,7 @@ let editing={type:null,id:null};
 function openForm(type,id){
   editing={type,id:id||null};
   const item = id ? db[type].find(x=>x.id===id) : {};
-  document.getElementById('md-title').textContent = (id?'এডিট করুন':'নতুন যোগ করুন')+' — '+({committee:'কার্যনির্বাহী পর্ষদ সদস্য',generalMembers:'সাধারণ সদস্য',activities:'কার্যক্রম',notices:'নোটিশ',gallery:'গ্যালারি',slides:'স্লাইড',courses:'কোর্স',corners:'কর্ণার'}[type]);
+  document.getElementById('md-title').textContent = (id?'এডিট করুন':'নতুন যোগ করুন')+' — '+({aboutCards:'আমাদের সম্পর্কে কার্ড',committee:'কার্যনির্বাহী পর্ষদ সদস্য',generalMembers:'সাধারণ সদস্য',activities:'কার্যক্রম',notices:'নোটিশ',gallery:'গ্যালারি',slides:'স্লাইড',courses:'কোর্স',corners:'কর্ণার'}[type]);
   const form = document.getElementById('md-form');
   form.innerHTML = FIELDS[type].map(([k,l,t])=>{
     const v = item[k]||'';
@@ -1643,7 +1713,10 @@ function saveSettings(e){
     statL3:document.getElementById('st-stat-l-3').value,
     statN4:document.getElementById('st-stat-n-4').value,
     statL4:document.getElementById('st-stat-l-4').value,
-    committeeSession:document.getElementById('st-committee-session').value
+    committeeSession:document.getElementById('st-committee-session').value,
+    pushNotifEnabled:document.getElementById('st-push-enabled').checked,
+    pushNotifText:document.getElementById('st-push-text').value,
+    pushNotifSeconds:Number(document.getElementById('st-push-seconds').value)||8
   };save();toast('সেটিংস সেভ হয়েছে');
 }
 
@@ -1709,7 +1782,7 @@ document.getElementById('sideNav').addEventListener('click',e=>{
   const tab=b.dataset.tab;
   document.querySelectorAll('#sideNav button').forEach(x=>x.classList.toggle('active',x===b));
   document.querySelectorAll('[data-pane]').forEach(p=>p.classList.toggle('active',p.dataset.pane===tab));
-  document.getElementById('admin-title').textContent={dashboard:'ড্যাশবোর্ড',committee:'কার্যনির্বাহী পর্ষদ ম্যানেজমেন্ট',generalMembers:'সাধারণ সদস্য ম্যানেজমেন্ট',activities:'কার্যক্রম ম্যানেজমেন্ট',notices:'নোটিশ ম্যানেজমেন্ট',gallery:'গ্যালারি ম্যানেজমেন্ট',slides:'হোম স্লাইড ম্যানেজমেন্ট',courses:'স্কিল ডেভলপমেন্ট ম্যানেজমেন্ট',corners:'কর্ণার ম্যানেজমেন্ট',settings:'সাইট সেটিংস'}[tab];
+  document.getElementById('admin-title').textContent={dashboard:'ড্যাশবোর্ড',about:'আমাদের সম্পর্কে ম্যানেজমেন্ট',committee:'কার্যনির্বাহী পর্ষদ ম্যানেজমেন্ট',generalMembers:'সাধারণ সদস্য ম্যানেজমেন্ট',activities:'কার্যক্রম ম্যানেজমেন্ট',notices:'নোটিশ ম্যানেজমেন্ট',gallery:'গ্যালারি ম্যানেজমেন্ট',slides:'হোম স্লাইড ম্যানেজমেন্ট',courses:'স্কিল ডেভলপমেন্ট ম্যানেজমেন্ট',corners:'কর্ণার ম্যানেজমেন্ট',settings:'সাইট সেটিংস'}[tab];
   closeSidebar();
 });
 window.addEventListener('resize',()=>{
